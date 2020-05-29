@@ -43,7 +43,6 @@ public class Conexion extends SQLiteOpenHelper {
                 "clave text, " +
                 "email text unique" +
                 ")"
-
         );
         db.execSQL("create table proyecto(" +
                 "id integer primary key autoincrement, " +
@@ -51,24 +50,91 @@ public class Conexion extends SQLiteOpenHelper {
                 "idDirector integer references usuario on delete cascade, " +
                 "fechaInicio text, " +
                 "fechaFin text, " +
-                "etapa text" +
+                "porcentajeDesarrollado integer" +
                 ")"
-
         );
-        db.execSQL("create table video(" +
-                "nombre text primary key, " +
-
-                "idReunion integer references reunion on delete cascade" +
+        db.execSQL("create table cargo(" +
+                "id integer primary key autoincrement, " +
+                "idProyecto integer references proyecto on delete cascade, " +
+                "nombre text, " +
+                "descripcion text, " +
+                "horario text, " +
+                "salario integer" +
                 ")"
-
+        );
+        db.execSQL("create table integrante(" +
+                "id integer primary key autoincrement, " +
+                "idProyecto integer references proyecto on delete cascade, " +
+                "idCargo integer references cargo on delete cascade" +
+                ")"
+        );
+        db.execSQL("create table actividad(" +
+                "id integer primary key autoincrement, " +
+                "idProyecto integer references proyecto on delete cascade, " +
+                "nombre text, " +
+                "descripcion text, " +
+                "idResponsable integer references usuario on delete cascade, " +
+                "fechaInicio text, " +
+                "fechaFin text, " +
+                "porcentajeDesarrollado integer" +
+                ")"
+        );
+        db.execSQL("create table tarea(" +
+                "id integer primary key autoincrement, " +
+                "idActividad integer references actividad on delete cascade, " +
+                "nombre text, " +
+                "descripcion text, " +
+                "idResponsable integer references usuario on delete cascade, " +
+                "fechaInicio text, " +
+                "fechaFin text, " +
+                "porcentajeDesarrollado integer" +
+                ")"
+        );
+        db.execSQL("create table recurso(" +
+                "id integer primary key autoincrement, " +
+                "idProyecto integer references proyecto on delete cascade, " +
+                "nombre text, " +
+                "cantidad integer, " +
+                "descripcion text, " +
+                "ubicacion text" +
+                ")"
+        );
+        db.execSQL("create table recurso_tarea(" +
+                "id integer primary key autoincrement, " +
+                "idTarea integer references tarea on delete cascade, " +
+                "idRecurso integer references recurso on delete cascade" +
+                ")"
+        );
+        db.execSQL("create table reunion(" +
+                "id integer primary key autoincrement, " +
+                "idProyecto integer references proyecto on delete cascade, " +
+                "coordenadaLatitud text, " +
+                "coordenadaLongitud text, " +
+                "sitio text, " +
+                "tematica text" +
+                ")"
+        );
+        db.execSQL("create table comentario(" +
+                "id integer primary key autoincrement, " +
+                "idActividad integer references actividad on delete cascade, " +
+                "titulo text, " +
+                "observacion text" +
+                ")"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists usuario");
+        db.execSQL("drop table if exists proyecto");
+        db.execSQL("drop table if exists cargo");
+        db.execSQL("drop table if exists integrante");
+        db.execSQL("drop table if exists actividad");
+        db.execSQL("drop table if exists tarea");
+        db.execSQL("drop table if exists recurso");
+        db.execSQL("drop table if exists recurso_tarea");
         db.execSQL("drop table if exists reunion");
-        db.execSQL("drop table if exists foto");
-        db.execSQL("drop table if exists video");
+        db.execSQL("drop table if exists comentario");
         onCreate(db);
     }
 
