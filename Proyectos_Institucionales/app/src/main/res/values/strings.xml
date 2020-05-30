@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Proyectos_Institucionales</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="password">Password</string>
+    <string name="documento_de_identidad">Documento de Identidad</string>
 </resources>

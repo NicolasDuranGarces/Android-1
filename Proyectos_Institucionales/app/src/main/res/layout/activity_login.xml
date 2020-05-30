@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Login">
 
     <LinearLayout
         android:id="@+id/linearVertical"
@@ -12,16 +12,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/txtCedula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/documento_de_identidad"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:autofillHints="" />
+
         <Button
             android:id="@+id/btnIniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/iniciar_sesion" />
-
-        <Button
-            android:id="@+id/btnRegistrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crear_cuenta" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
