@@ -20,34 +20,33 @@
         android:id="@+id/linearVertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/userprofile"
+
             android:scaleType="center"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="100dp"/>
+            android:src="@drawable/userprofile" />
 
         <EditText
             android:id="@+id/txtCedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/documento_de_identidad"
-            android:inputType="textPersonName"
-            android:autofillHints=""
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="80dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="80dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
             android:background="@drawable/input"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:ems="10"
+            android:hint="Correo Electronico"
+            android:inputType="textPersonName"
             android:padding="10dp"
-            />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
         <EditText
             android:id="@+id/txtPassword"
@@ -71,14 +70,23 @@
             android:id="@+id/btnIniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/iniciar_sesion"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="iniciar"
+            android:text="@string/iniciar_sesion" />
 
-
-            />
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="regresar"
+            android:text="Regresar" />
 
 
     </LinearLayout>

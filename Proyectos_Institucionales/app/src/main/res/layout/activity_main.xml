@@ -29,26 +29,26 @@
         <Button
             android:layout_width="300dp"
             android:layout_height="55dp"
+            android:layout_margin="30dp"
             android:background="@drawable/btn_redondeado_blanco"
             android:elevation="5dp"
-            android:layout_margin="30dp"
-            android:textSize="16dp"
-            android:textColor="@color/white"
+            android:onClick="iniciarSesion"
             android:text="Iniciar Sesion"
+            android:textColor="@color/white"
 
-            />
+            android:textSize="16dp" />
 
 
         <Button
             android:layout_width="300dp"
             android:layout_height="55dp"
-            android:background="@drawable/btn_redondeado_blanco"
             android:layout_margin="30dp"
-            android:textSize="16dp"
-            android:textColor="@color/white"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="registrarUsuario"
             android:text="Registrarse"
+            android:textColor="@color/white"
 
-            />
+            android:textSize="16dp" />
 
 
     </LinearLayout>

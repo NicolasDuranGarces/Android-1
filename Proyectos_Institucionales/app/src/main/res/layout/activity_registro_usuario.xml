@@ -25,11 +25,11 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="                Registro De Usuario"
-            android:textColor="@color/blue"
-            android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:text="Registro De Usuario"
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/editText"
@@ -70,17 +70,17 @@
             android:id="@+id/editText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="# Documento"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/input"
+            android:ems="10"
+            android:hint="DNI"
+            android:inputType="textPersonName"
+            android:padding="10dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:padding="10dp"/>
+            android:paddingRight="10dp" />
 
         <EditText
             android:id="@+id/editText4"
@@ -148,12 +148,25 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/registrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar"
             android:background="@drawable/btn_redondeado_blanco"
             android:textColor="@color/white"
             android:layout_margin="30dp"/>
+
+        <Button
+            android:id="@+id/regresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="regresar"
+            android:text="Regresar"
+            android:textColor="@color/white" />
+
+
     </LinearLayout>
 </RelativeLayout>
