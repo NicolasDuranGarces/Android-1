@@ -65,7 +65,9 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL("create table integrante(" +
                 "id integer primary key autoincrement, " +
                 "idProyecto integer references proyecto on delete cascade, " +
-                "idCargo integer references cargo on delete cascade" +
+                "idUsuario integer references usuario on delete cascade, " +
+                "idCargo integer references cargo on delete cascade, " +
+                "unique (idProyecto, idUsuario, idCargo)" +
                 ")"
         );
         db.execSQL("create table actividad(" +
@@ -84,7 +86,6 @@ public class Conexion extends SQLiteOpenHelper {
                 "idActividad integer references actividad on delete cascade, " +
                 "nombre text, " +
                 "descripcion text, " +
-                "idResponsable integer references usuario on delete cascade, " +
                 "fechaInicio text, " +
                 "fechaFin text, " +
                 "porcentajeDesarrollado integer" +
