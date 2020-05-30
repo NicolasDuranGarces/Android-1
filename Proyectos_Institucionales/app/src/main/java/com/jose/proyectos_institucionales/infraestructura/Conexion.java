@@ -103,7 +103,8 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL("create table recurso_tarea(" +
                 "id integer primary key autoincrement, " +
                 "idTarea integer references tarea on delete cascade, " +
-                "idRecurso integer references recurso on delete cascade" +
+                "idRecurso integer references recurso on delete cascade," +
+                "unique (idTarea, idRecurso)" +
                 ")"
         );
         db.execSQL("create table reunion(" +
