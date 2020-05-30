@@ -3,7 +3,6 @@ package com.jose.proyectos_institucionales.modelo;
 public class Usuario {
 
     private Integer id;
-    private String tipoDocumentoIdentidad;
     private String numeroDocumento;
     private String nombres;
     private String apellidos;
@@ -11,9 +10,8 @@ public class Usuario {
     private String clave;
     private String email;
 
-    public Usuario(Integer id, String tipoDocumentoIdentidad, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email) {
+    public Usuario(Integer id, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email) {
         this.id = id;
-        this.tipoDocumentoIdentidad = tipoDocumentoIdentidad;
         this.numeroDocumento = numeroDocumento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -28,14 +26,6 @@ public class Usuario {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTipoDocumentoIdentidad() {
-        return tipoDocumentoIdentidad;
-    }
-
-    public void setTipoDocumentoIdentidad(String tipoDocumentoIdentidad) {
-        this.tipoDocumentoIdentidad = tipoDocumentoIdentidad;
     }
 
     public String getNumeroDocumento() {

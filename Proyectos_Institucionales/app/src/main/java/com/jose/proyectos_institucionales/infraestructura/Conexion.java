@@ -35,7 +35,6 @@ public class Conexion extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table usuario(" +
                 "id integer primary key autoincrement, " +
-                "tipoDocumentoIdentidad text, " +
                 "numeroDocumento text unique, " +
                 "nombres text, " +
                 "apellidos text, " +
@@ -59,7 +58,8 @@ public class Conexion extends SQLiteOpenHelper {
                 "nombre text, " +
                 "descripcion text, " +
                 "horario text, " +
-                "salario integer" +
+                "salario integer, " +
+                "unique (idProyecto, nombre)" +
                 ")"
         );
         db.execSQL("create table integrante(" +
@@ -67,7 +67,7 @@ public class Conexion extends SQLiteOpenHelper {
                 "idProyecto integer references proyecto on delete cascade, " +
                 "idUsuario integer references usuario on delete cascade, " +
                 "idCargo integer references cargo on delete cascade, " +
-                "unique (idProyecto, idUsuario, idCargo)" +
+                "unique (idProyecto, idUsuario)" +
                 ")"
         );
         db.execSQL("create table actividad(" +
@@ -78,7 +78,8 @@ public class Conexion extends SQLiteOpenHelper {
                 "idResponsable integer references usuario on delete cascade, " +
                 "fechaInicio text, " +
                 "fechaFin text, " +
-                "porcentajeDesarrollado integer" +
+                "porcentajeDesarrollado integer, " +
+                "unique (idProyecto, nombre)" +
                 ")"
         );
         db.execSQL("create table tarea(" +
@@ -88,7 +89,8 @@ public class Conexion extends SQLiteOpenHelper {
                 "descripcion text, " +
                 "fechaInicio text, " +
                 "fechaFin text, " +
-                "porcentajeDesarrollado integer" +
+                "porcentajeDesarrollado integer, " +
+                "unique (idActividad, nombre)" +
                 ")"
         );
         db.execSQL("create table recurso(" +

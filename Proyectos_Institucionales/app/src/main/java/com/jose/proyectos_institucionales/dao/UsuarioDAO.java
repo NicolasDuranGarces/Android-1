@@ -21,7 +21,6 @@ public class UsuarioDAO {
     public boolean guardar(Usuario usuario){
         ContentValues registro = new ContentValues();
         registro.put("id", usuario.getId());
-        registro.put("tipoDocumentoIdentidad", usuario.getTipoDocumentoIdentidad());
         registro.put("numeroDocumento", usuario.getNumeroDocumento());
         registro.put("nombres", usuario.getNombres());
         registro.put("apellidos", usuario.getApellidos());
@@ -35,7 +34,6 @@ public class UsuarioDAO {
     public Usuario buscar(String numeroDocumento){
         Usuario usuario = null;
         String consulta = "select id, " +
-                "tipoDocumentoIdentidad, " +
                 "numeroDocumento, " +
                 "nombres, " +
                 "apellidos, " +
@@ -55,8 +53,7 @@ public class UsuarioDAO {
                     temp.getString(3),
                     temp.getString(4),
                     temp.getString(5),
-                    temp.getString(6),
-                    temp.getString(7)
+                    temp.getString(6)
             );
         }
         conex.cerrarConexion();
@@ -74,7 +71,6 @@ public class UsuarioDAO {
         String condicion = "id = " + usuario.getId();
 
         ContentValues registro = new ContentValues();
-        registro.put("tipoDocumentoIdentidad", usuario.getTipoDocumentoIdentidad());
         registro.put("numeroDocumento", usuario.getNumeroDocumento());
         registro.put("nombres", usuario.getNombres());
         registro.put("apellidos", usuario.getApellidos());
@@ -89,7 +85,6 @@ public class UsuarioDAO {
     public List<Usuario> listar(){
         List<Usuario> listaUsuarios = new ArrayList<Usuario>();
         String consulta = "select id, " +
-                "tipoDocumentoIdentidad, " +
                 "numeroDocumento, " +
                 "nombres, " +
                 "apellidos, " +
@@ -108,8 +103,7 @@ public class UsuarioDAO {
                         temp.getString(3),
                         temp.getString(4),
                         temp.getString(5),
-                        temp.getString(6),
-                        temp.getString(7)
+                        temp.getString(6)
                 );
                 listaUsuarios.add(usuario);
             } while (temp.moveToNext());

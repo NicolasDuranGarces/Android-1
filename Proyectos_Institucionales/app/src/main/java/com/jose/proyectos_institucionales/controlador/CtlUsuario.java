@@ -15,8 +15,8 @@ public class CtlUsuario {
         dao = new UsuarioDAO(activity);
     }
 
-    public boolean guardarUsuario(Integer id, String tipoDocumentoIdentidad, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
-        Usuario usuario = new Usuario(id, tipoDocumentoIdentidad, numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
+    public boolean guardarUsuario(Integer id, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
+        Usuario usuario = new Usuario(id, numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
         return dao.guardar(usuario);
     }
 
@@ -25,12 +25,12 @@ public class CtlUsuario {
     }
 
     public boolean eliminarUsuario(Integer id){
-        Usuario usuario = new Usuario(id, "", "", "", "", "", "", "");
+        Usuario usuario = new Usuario(id, "", "", "", "", "", "");
         return dao.eliminar(usuario);
     }
 
-    public boolean modificarUsuario(Integer id, String tipoDocumentoIdentidad, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
-        Usuario usuario = new Usuario(id, tipoDocumentoIdentidad, numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
+    public boolean modificarUsuario(Integer id, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
+        Usuario usuario = new Usuario(id, numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
         return dao.modificar(usuario);
     }
 
