@@ -31,27 +31,27 @@
             android:textColor="@color/blue"
             android:textSize="24sp" />
 
+
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/input"
             android:ems="10"
             android:hint="Nombres"
             android:inputType="textPersonName"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/input"
+            android:padding="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:padding="10dp"
 
             />
 
-
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txtApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -67,7 +67,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/txtDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -83,7 +83,7 @@
             android:paddingRight="10dp" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/txtFechaNacimiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -99,7 +99,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -115,7 +115,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/txtValidarPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -131,7 +131,7 @@
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/txtCorreoElectronico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

@@ -14,11 +14,11 @@ public class UsuarioDAO {
 
     Conexion conex;
 
-    public UsuarioDAO(Activity activity){
+    public UsuarioDAO(Activity activity) {
         conex = new Conexion(activity);
     }
 
-    public boolean guardar(Usuario usuario){
+    public boolean guardar(Usuario usuario) {
         ContentValues registro = new ContentValues();
         registro.put("id", usuario.getId());
         registro.put("numeroDocumento", usuario.getNumeroDocumento());
@@ -31,7 +31,7 @@ public class UsuarioDAO {
         return conex.ejecutarInsert("usuario", registro);
     }
 
-    public Usuario buscar(String numeroDocumento){
+    public Usuario buscar(String numeroDocumento) {
         Usuario usuario = null;
         String consulta = "select id, " +
                 "numeroDocumento, " +
@@ -44,7 +44,7 @@ public class UsuarioDAO {
                 "where numeroDocumento= '" + numeroDocumento + "'";
         Cursor temp = conex.ejecutarSearch(consulta);
 
-        if (temp.getCount() > 0){
+        if (temp.getCount() > 0) {
             temp.moveToFirst();
             usuario = new Usuario(
                     temp.getInt(0),
@@ -60,13 +60,36 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public boolean eliminar(Usuario usuario){
+
+    public Boolean verificarExistencia(String numeroDocumento) {
+        Usuario usuario = null;
+        String consulta = "select id, " +
+                "numeroDocumento, " +
+                "nombres, " +
+                "apellidos, " +
+                "fechaNacimiento, " +
+                "clave, " +
+                "email " +
+                "from usuario " +
+                "where numeroDocumento= '" + numeroDocumento + "'";
+        Cursor temp = conex.ejecutarSearch(consulta);
+
+        if (temp.getCount() > 0) {
+            return true;
+        }
+            conex.cerrarConexion();
+            return false;
+
+    }
+
+    public boolean eliminar(Usuario usuario) {
         String tabla = "usuario";
         String condicion = "id = " + usuario.getId();
         return conex.ejecutarDelete(tabla, condicion);
     }
 
-    public boolean modificar(Usuario usuario){
+
+    public boolean modificar(Usuario usuario) {
         String tabla = "usuario";
         String condicion = "id = " + usuario.getId();
 
@@ -82,7 +105,7 @@ public class UsuarioDAO {
 
     }
 
-    public List<Usuario> listar(){
+    public List<Usuario> listar() {
         List<Usuario> listaUsuarios = new ArrayList<Usuario>();
         String consulta = "select id, " +
                 "numeroDocumento, " +
@@ -94,8 +117,8 @@ public class UsuarioDAO {
                 "from usuario";
         Cursor temp = conex.ejecutarSearch(consulta);
 
-        if(temp.moveToFirst()){
-            do{
+        if (temp.moveToFirst()) {
+            do {
                 Usuario usuario = new Usuario(
                         temp.getInt(0),
                         temp.getString(1),
