@@ -60,7 +60,7 @@ public class UsuarioDAO {
     }
 
 
-    public Boolean verificarExistencia(String numeroDocumento) {
+    public Usuario buscarCorreo(String correo) {
         Usuario usuario = null;
         String consulta = "select id, " +
                 "numeroDocumento, " +
@@ -70,15 +70,23 @@ public class UsuarioDAO {
                 "clave, " +
                 "email " +
                 "from usuario " +
-                "where numeroDocumento= '" + numeroDocumento + "'";
+                "where email = '" + correo + "'";
         Cursor temp = conex.ejecutarSearch(consulta);
 
         if (temp.getCount() > 0) {
-            return true;
+            temp.moveToFirst();
+            usuario = new Usuario(
+                    temp.getInt(0),
+                    temp.getString(1),
+                    temp.getString(2),
+                    temp.getString(3),
+                    temp.getString(4),
+                    temp.getString(5),
+                    temp.getString(6)
+            );
         }
-            conex.cerrarConexion();
-            return false;
-
+        conex.cerrarConexion();
+        return usuario;
     }
 
     public boolean eliminar(Usuario usuario) {

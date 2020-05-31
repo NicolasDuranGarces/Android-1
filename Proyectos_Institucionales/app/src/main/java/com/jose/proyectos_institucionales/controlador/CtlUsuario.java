@@ -20,11 +20,12 @@ public class CtlUsuario {
         return dao.guardar(usuario);
     }
 
-    public Usuario buscarUsuario(String numeroDocumento){
-        if (!dao.verificarExistencia(numeroDocumento)){
-            return dao.buscar(numeroDocumento);
-        }
-        return null;
+    public Usuario buscarUsuarioCedula(String numeroDocumento){
+        return dao.buscar(numeroDocumento);
+    }
+
+    public Usuario buscarUsuarioCorreo(String correo){
+        return dao.buscarCorreo(correo);
     }
 
     public boolean eliminarUsuario(Integer id){

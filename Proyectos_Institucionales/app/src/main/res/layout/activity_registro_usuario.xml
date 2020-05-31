@@ -29,7 +29,9 @@
             android:layout_marginBottom="20dp"
             android:text="Registro De Usuario"
             android:textColor="@color/blue"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:paddingLeft="50dp"/>
+
 
 
         <EditText
