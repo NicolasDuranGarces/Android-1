@@ -42,52 +42,50 @@
             android:paddingLeft="20dp"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnMisProyectos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="misProyectos"
             android:text="proyectos que dirijo"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:ems="10"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnIniciar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="proyectos que integro"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:ems="10"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/white"/>
+            android:text="@string/iniciar_sesion" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnIniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modificar MI Perfil"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:ems="10"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/white"/>
+            android:text="@string/iniciar_sesion" />
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:text="Salir" />
+
+
+
+
     </LinearLayout>
 </RelativeLayout>
