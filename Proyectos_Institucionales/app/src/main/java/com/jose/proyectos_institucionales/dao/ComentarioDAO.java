@@ -20,7 +20,6 @@ public class ComentarioDAO {
 
     public boolean guardar(Comentario comentario){
         ContentValues registro = new ContentValues();
-        registro.put("id", comentario.getId());
         registro.put("idActividad", comentario.getIdActividad());
         registro.put("titulo", comentario.getTitulo());
         registro.put("observacion", comentario.getObservacion());

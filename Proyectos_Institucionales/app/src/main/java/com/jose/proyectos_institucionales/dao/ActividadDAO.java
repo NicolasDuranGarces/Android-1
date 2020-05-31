@@ -20,7 +20,6 @@ public class ActividadDAO {
 
     public boolean guardar(Actividad actividad){
         ContentValues registro = new ContentValues();
-        registro.put("id", actividad.getId());
         registro.put("idProyecto", actividad.getIdProyecto());
         registro.put("nombre", actividad.getNombre());
         registro.put("descripcion", actividad.getDescripcion());

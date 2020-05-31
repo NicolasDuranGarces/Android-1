@@ -22,6 +22,16 @@ public class Actividad {
         this.porcentajeDesarrollado = porcentajeDesarrollado;
     }
 
+    public Actividad(Integer idProyecto, String nombre, String descripcion, Integer idResponsable, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado) {
+        this.idProyecto = idProyecto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.idResponsable = idResponsable;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.porcentajeDesarrollado = porcentajeDesarrollado;
+    }
+
     public Integer getId() {
         return id;
     }

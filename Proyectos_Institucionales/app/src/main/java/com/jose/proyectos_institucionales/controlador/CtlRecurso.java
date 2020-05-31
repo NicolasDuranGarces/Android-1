@@ -15,8 +15,8 @@ public class CtlRecurso {
         dao = new RecursoDAO(activity);
     }
 
-    public boolean guardarRecurso(Integer id, Integer idProyecto, String nombre, Integer cantidad, String descripcion, String ubicacion){
-        Recurso recurso = new Recurso(id, idProyecto, nombre, cantidad, descripcion, ubicacion);
+    public boolean guardarRecurso(Integer idProyecto, String nombre, Integer cantidad, String descripcion, String ubicacion){
+        Recurso recurso = new Recurso(idProyecto, nombre, cantidad, descripcion, ubicacion);
         return dao.guardar(recurso);
     }
 

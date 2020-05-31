@@ -20,7 +20,6 @@ public class ProyectoDAO {
 
     public boolean guardar(Proyecto proyecto){
         ContentValues registro = new ContentValues();
-        registro.put("id", proyecto.getId());
         registro.put("nombre", proyecto.getNombre());
         registro.put("idDirector", proyecto.getIdDirector());
         registro.put("fechaInicio", proyecto.getFechaInicio());

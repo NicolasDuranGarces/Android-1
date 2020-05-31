@@ -20,7 +20,6 @@ public class IntegranteDAO {
 
     public boolean guardar(Integrante integrante){
         ContentValues registro = new ContentValues();
-        registro.put("id", integrante.getId());
         registro.put("idProyecto", integrante.getIdProyecto());
         registro.put("idUsuario", integrante.getIdUsuario());
         registro.put("idCargo", integrante.getIdCargo());

@@ -20,6 +20,15 @@ public class Tarea {
         this.porcentajeDesarrollado = porcentajeDesarrollado;
     }
 
+    public Tarea(Integer idActividad, String nombre, String descripcion, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado) {
+        this.idActividad = idActividad;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.porcentajeDesarrollado = porcentajeDesarrollado;
+    }
+
     public Integer getId() {
         return id;
     }

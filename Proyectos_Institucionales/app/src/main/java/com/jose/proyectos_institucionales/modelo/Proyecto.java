@@ -18,6 +18,14 @@ public class Proyecto {
         this.porcentajeDesarrollado = porcentajeDesarrollado;
     }
 
+    public Proyecto(String nombre, Integer idDirector, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado) {
+        this.nombre = nombre;
+        this.idDirector = idDirector;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.porcentajeDesarrollado = porcentajeDesarrollado;
+    }
+
     public Integer getId() {
         return id;
     }

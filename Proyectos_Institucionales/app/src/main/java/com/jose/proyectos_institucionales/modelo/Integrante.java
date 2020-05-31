@@ -14,6 +14,12 @@ public class Integrante {
         this.idCargo = idCargo;
     }
 
+    public Integrante(Integer idProyecto, Integer idUsuario, Integer idCargo) {
+        this.idProyecto = idProyecto;
+        this.idUsuario = idUsuario;
+        this.idCargo = idCargo;
+    }
+
     public Integer getId() {
         return id;
     }

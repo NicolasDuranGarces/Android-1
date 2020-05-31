@@ -15,8 +15,8 @@ public class CtlProyecto {
         dao = new ProyectoDAO(activity);
     }
 
-    public boolean guardarProyecto(Integer id, String nombre, Integer idDirector, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado){
-        Proyecto proyecto = new Proyecto(id, nombre, idDirector, fechaInicio, fechaFin, porcentajeDesarrollado);
+    public boolean guardarProyecto( String nombre, Integer idDirector, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado){
+        Proyecto proyecto = new Proyecto(nombre, idDirector, fechaInicio, fechaFin, porcentajeDesarrollado);
         return dao.guardar(proyecto);
     }
 

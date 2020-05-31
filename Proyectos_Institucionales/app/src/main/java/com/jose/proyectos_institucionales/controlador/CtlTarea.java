@@ -15,8 +15,8 @@ public class CtlTarea {
         dao = new TareaDAO(activity);
     }
 
-    public boolean guardarTarea(Integer id, Integer idActividad, String nombre, String descripcion, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado){
-        Tarea tarea = new Tarea(id, idActividad, nombre, descripcion, fechaInicio, fechaFin, porcentajeDesarrollado);
+    public boolean guardarTarea(Integer idActividad, String nombre, String descripcion, String fechaInicio, String fechaFin, Integer porcentajeDesarrollado){
+        Tarea tarea = new Tarea(idActividad, nombre, descripcion, fechaInicio, fechaFin, porcentajeDesarrollado);
         return dao.guardar(tarea);
     }
 

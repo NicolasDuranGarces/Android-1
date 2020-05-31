@@ -15,8 +15,8 @@ public class CtlComentario {
         dao = new ComentarioDAO(activity);
     }
 
-    public boolean guardarComentario(Integer id, Integer idActividad, String titulo, String observacion){
-        Comentario comentario = new Comentario(id, idActividad, titulo, observacion);
+    public boolean guardarComentario(Integer idActividad, String titulo, String observacion){
+        Comentario comentario = new Comentario(idActividad, titulo, observacion);
         return dao.guardar(comentario);
     }
 

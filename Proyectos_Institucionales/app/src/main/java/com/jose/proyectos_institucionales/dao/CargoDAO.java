@@ -20,7 +20,6 @@ public class CargoDAO {
 
     public boolean guardar(Cargo cargo){
         ContentValues registro = new ContentValues();
-        registro.put("id", cargo.getId());
         registro.put("idProyecto", cargo.getIdProyecto());
         registro.put("nombre", cargo.getNombre());
         registro.put("descripcion", cargo.getDescripcion());

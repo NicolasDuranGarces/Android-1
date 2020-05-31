@@ -18,6 +18,14 @@ public class Recurso {
         this.ubicacion = ubicacion;
     }
 
+    public Recurso(Integer idProyecto, String nombre, Integer cantidad, String descripcion, String ubicacion) {
+        this.idProyecto = idProyecto;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.descripcion = descripcion;
+        this.ubicacion = ubicacion;
+    }
+
     public Integer getId() {
         return id;
     }

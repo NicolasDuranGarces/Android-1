@@ -14,6 +14,12 @@ public class Comentario {
         this.observacion = observacion;
     }
 
+    public Comentario(Integer idActividad, String titulo, String observacion) {
+        this.idActividad = idActividad;
+        this.titulo = titulo;
+        this.observacion = observacion;
+    }
+
     public Integer getId() {
         return id;
     }

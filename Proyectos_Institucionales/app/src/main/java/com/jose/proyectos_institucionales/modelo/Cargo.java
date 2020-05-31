@@ -18,6 +18,14 @@ public class Cargo {
         this.idDirector = idDirector;
     }
 
+    public Cargo(Integer idProyecto, String nombre, String descripcion, String horario, Integer idDirector) {
+        this.idProyecto = idProyecto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horario = horario;
+        this.idDirector = idDirector;
+    }
+
     public Integer getId() {
         return id;
     }

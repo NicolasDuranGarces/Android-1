@@ -20,7 +20,6 @@ public class RecursoDAO {
 
     public boolean guardar(Recurso recurso){
         ContentValues registro = new ContentValues();
-        registro.put("id", recurso.getId());
         registro.put("idProyecto", recurso.getIdProyecto());
         registro.put("nombre", recurso.getNombre());
         registro.put("cantidad", recurso.getCantidad());

@@ -15,8 +15,8 @@ public class CtlReunion {
         dao = new ReunionDAO(activity);
     }
 
-    public boolean guardarReunion(Integer id, Integer idProyecto, String coordenadaLatitud, String coordenadaLongitud, String sitio, String tematica){
-        Reunion reunion = new Reunion(id, idProyecto, coordenadaLatitud, coordenadaLongitud, sitio, tematica);
+    public boolean guardarReunion(Integer idProyecto, String coordenadaLatitud, String coordenadaLongitud, String sitio, String tematica){
+        Reunion reunion = new Reunion(idProyecto, coordenadaLatitud, coordenadaLongitud, sitio, tematica);
         return dao.guardar(reunion);
     }
 

@@ -18,6 +18,14 @@ public class Reunion {
         this.tematica = tematica;
     }
 
+    public Reunion(Integer idProyecto, String coordenadaLatitud, String coordenadaLongitud, String sitio, String tematica) {
+        this.idProyecto = idProyecto;
+        this.coordenadaLatitud = coordenadaLatitud;
+        this.coordenadaLongitud = coordenadaLongitud;
+        this.sitio = sitio;
+        this.tematica = tematica;
+    }
+
     public Integer getId() {
         return id;
     }

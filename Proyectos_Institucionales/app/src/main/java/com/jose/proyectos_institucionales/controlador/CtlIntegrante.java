@@ -15,8 +15,8 @@ public class CtlIntegrante {
         dao = new IntegranteDAO(activity);
     }
 
-    public boolean guardarIntegrante(Integer id, Integer idProyecto, Integer idUsuario, Integer idCargo){
-        Integrante integrante = new Integrante(id, idProyecto, idUsuario, idCargo);
+    public boolean guardarIntegrante(Integer idProyecto, Integer idUsuario, Integer idCargo){
+        Integrante integrante = new Integrante(idProyecto, idUsuario, idCargo);
         return dao.guardar(integrante);
     }
 

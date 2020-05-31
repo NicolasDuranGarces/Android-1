@@ -20,7 +20,6 @@ public class ReunionDAO {
 
     public boolean guardar(Reunion reunion){
         ContentValues registro = new ContentValues();
-        registro.put("id", reunion.getId());
         registro.put("idProyecto", reunion.getIdProyecto());
         registro.put("coordenadaLatitud", reunion.getCoordenadaLatitud());
         registro.put("coordenadaLongitud", reunion.getCoordenadaLongitud());
