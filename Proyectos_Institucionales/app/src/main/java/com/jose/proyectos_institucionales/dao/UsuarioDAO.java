@@ -96,6 +96,36 @@ public class UsuarioDAO {
     }
 
 
+    public Usuario buscarPorID(Integer idUsuario) {
+        Usuario usuario = null;
+        String consulta = "select id, " +
+                "numeroDocumento, " +
+                "nombres, " +
+                "apellidos, " +
+                "fechaNacimiento, " +
+                "clave, " +
+                "email " +
+                "from usuario " +
+                "where id = '" + idUsuario + "'";
+        Cursor temp = conex.ejecutarSearch(consulta);
+
+        if (temp.getCount() > 0) {
+            temp.moveToFirst();
+            usuario = new Usuario(
+                    temp.getInt(0),
+                    temp.getString(1),
+                    temp.getString(2),
+                    temp.getString(3),
+                    temp.getString(4),
+                    temp.getString(5),
+                    temp.getString(6)
+            );
+        }
+        conex.cerrarConexion();
+        return usuario;
+    }
+
+
     public boolean modificar(Usuario usuario) {
         String tabla = "usuario";
         String condicion = "id = " + usuario.getId();

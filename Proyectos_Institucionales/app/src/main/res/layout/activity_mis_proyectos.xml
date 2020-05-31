@@ -30,10 +30,10 @@
             android:paddingLeft="50dp"/>
 
         <ListView
+            android:id="@+id/listaProyectos"
             android:layout_width="match_parent"
             android:layout_height="515dp"
-            android:layout_marginBottom="20dp"
-            >
+            android:layout_marginBottom="20dp">
 
         </ListView>
 

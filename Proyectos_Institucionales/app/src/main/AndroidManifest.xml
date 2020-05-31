@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CrearProyecto"></activity>
+        <activity android:name=".EleccionCargoUsuario"></activity>
+        <activity android:name=".GestionIntegrantesProyecto" />
+        <activity android:name=".DetalleProyectoPropio" />
+        <activity android:name=".CrearProyecto" />
         <activity android:name=".misProyectos" />
         <activity android:name=".MenuPrincipal" />
         <activity android:name=".RegistroUsuario" />

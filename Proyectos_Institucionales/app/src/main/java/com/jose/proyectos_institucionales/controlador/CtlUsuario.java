@@ -28,6 +28,10 @@ public class CtlUsuario {
         return dao.buscarCorreo(correo);
     }
 
+    public Usuario buscarUsuarioPorID(Integer idUsuario){
+        return dao.buscarPorID(idUsuario);
+    }
+
     public boolean eliminarUsuario(Integer id){
         Usuario usuario = new Usuario(id, "", "", "", "", "", "");
         return dao.eliminar(usuario);
