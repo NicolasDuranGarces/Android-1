@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
 
@@ -60,18 +61,19 @@ public class RegistroUsuario extends AppCompatActivity {
 
     public void registar(View view){
 
-        if (!txtNombre.getText().equals("")&& !txtApellido.getText().equals("") && !txtDNI.getText().equals("")
-        && !txtCorreo.getText().equals("") && !txtContrasena.getText().equals("") && !txtVerificacionContrasena.getText().equals("")){
-            if (txtContrasena.getText().equals(txtVerificacionContrasena.getText())){
-               // controladorUsuario.guardarUsuario(null,txtDNI.getText())
-            }else {
-
-            }
+        if (txtNombre.getText().toString().equals("")|| txtApellido.getText().toString().equals("") || txtDNI.getText().toString().equals("")
+        && txtCorreo.getText().toString().equals("") || txtContrasena.getText().toString().equals("") || txtVerificacionContrasena.getText().toString().equals("")){
+            Toast.makeText( getApplicationContext(), "Todos Los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
         }else{
+            if (txtContrasena.getText().toString().equals(txtVerificacionContrasena.getText().toString())){
+                controladorUsuario.guardarUsuario(txtDNI.getText().toString(),txtNombre.getText().toString(),txtApellido.getText().toString(),txtFecha.getText().toString(),txtContrasena.getText().toString(),txtCorreo.getText().toString());
+                Toast.makeText( getApplicationContext(), "Se Guardo Correctamente", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this , Login.class);
+                startActivity(intent);
 
+            }else {
+                Toast.makeText( getApplicationContext(), "Las Contrasenas no Coinciden", Toast.LENGTH_SHORT).show();
+            }
         }
-
-        Intent intent = new Intent(this , Login.class);
-        startActivity(intent);
     }
 }
