@@ -97,6 +97,8 @@ public class CrearProyecto extends AppCompatActivity {
             controladorProyecto.guardarProyecto(txtNombre.getText().toString(),idUsuario,txtFechaInicio.getText().toString(),txtFechaFin.getText().toString(),0);
             Toast.makeText( getApplicationContext(), "Se Registro Correctamente", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this , misProyectos.class);
+            intent.putExtra("dni",cedula);
+            intent.putExtra("idUsuario",idUsuario);
             startActivity(intent);
         }else{
             Toast.makeText( getApplicationContext(), "Todos los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
