@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
 import com.jose.proyectos_institucionales.modelo.Usuario;
+
+import java.io.Serializable;
 
 public class Login extends AppCompatActivity {
 
@@ -36,6 +40,10 @@ public class Login extends AppCompatActivity {
             Usuario user = controladorUsuario.buscarUsuarioCorreo(txtCorreo.getText().toString());
             if (user.getClave().equals(txtContrasena.getText().toString())){
                 Toast.makeText( getApplicationContext(), "Ingreso Exitoso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this , MenuPrincipal.class);
+                intent.putExtra("dni", user.getNumeroDocumento());
+                startActivity(intent);
+
             }else{
                 Toast.makeText( getApplicationContext(), "Correo / Contrasena Incorrecta", Toast.LENGTH_SHORT).show();
             }
