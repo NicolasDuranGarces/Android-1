@@ -20,7 +20,6 @@ public class UsuarioDAO {
 
     public boolean guardar(Usuario usuario) {
         ContentValues registro = new ContentValues();
-        registro.put("id", usuario.getId());
         registro.put("numeroDocumento", usuario.getNumeroDocumento());
         registro.put("nombres", usuario.getNombres());
         registro.put("apellidos", usuario.getApellidos());

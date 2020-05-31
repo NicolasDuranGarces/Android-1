@@ -20,6 +20,15 @@ public class Usuario {
         this.email = email;
     }
 
+    public Usuario(String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email) {
+        this.numeroDocumento = numeroDocumento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+        this.clave = clave;
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }

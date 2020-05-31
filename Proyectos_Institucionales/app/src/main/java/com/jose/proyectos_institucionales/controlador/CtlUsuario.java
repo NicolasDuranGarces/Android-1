@@ -15,8 +15,8 @@ public class CtlUsuario {
         dao = new UsuarioDAO(activity);
     }
 
-    public boolean guardarUsuario(Integer id, String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
-        Usuario usuario = new Usuario(id, numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
+    public boolean guardarUsuario(String numeroDocumento, String nombres, String apellidos, String fechaNacimiento, String clave, String email){
+        Usuario usuario = new Usuario(numeroDocumento, nombres, apellidos, fechaNacimiento, clave, email);
         return dao.guardar(usuario);
     }
 
