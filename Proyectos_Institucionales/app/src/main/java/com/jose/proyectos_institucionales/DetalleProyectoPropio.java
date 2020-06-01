@@ -45,4 +45,11 @@ public class DetalleProyectoPropio extends AppCompatActivity {
         intent.putExtra("idProyecto", idProyecto);
         startActivity(intent);
     }
+
+    public void gestionCargo(View view){
+        Intent intent = new Intent(this, ListadoDeCargos.class);
+        intent.putExtra("idProyecto", idProyecto);
+        intent.putExtra("idDirector", pro.getIdDirector());
+        startActivity(intent);
+    }
 }

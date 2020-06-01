@@ -35,7 +35,6 @@
             android:onClick="iniciarSesion"
             android:text="Iniciar Sesion"
             android:textColor="@color/white"
-
             android:textSize="16dp" />
 
 

@@ -75,6 +75,11 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
         startActivity(intent);
     }
 
+    public void regresar(View view){
+        Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        startActivity(intent);
+    }
+
     public void cargarLista(ArrayList<Integrante> lista) {
 
         ArrayList<String> nombreCargo = new ArrayList<>();

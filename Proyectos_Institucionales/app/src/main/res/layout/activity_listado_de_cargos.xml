@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GestionIntegrantesProyecto">
+    tools:context=".ListadoDeCargos">
 
 
     <ImageView
@@ -22,22 +22,12 @@
 
 
 
-        <EditText
-            android:id="@+id/txtCedulaUsuario"
+        <ListView
+            android:id="@+id/listVieww"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
-            android:autofillHints=""
-            android:background="@drawable/input"
-            android:ems="10"
-            android:hint="Docuemento de Identidad"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:layout_height="532dp">
+
+        </ListView>
 
         <Button
             android:id="@+id/registrar"
@@ -45,16 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="buscarUsuarioAgregar"
-            android:text="Buscar Persona"
+            android:onClick="registrarCargo"
+            android:text="Crear Un Cargo"
             android:textColor="@color/white" />
-
-        <ListView
-            android:id="@+id/listVieww"
-            android:layout_width="match_parent"
-            android:layout_height="532dp">
-
-        </ListView>
 
         <Button
             android:id="@+id/registrar2"
