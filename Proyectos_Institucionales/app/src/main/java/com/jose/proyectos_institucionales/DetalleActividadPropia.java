@@ -13,7 +13,7 @@ import com.jose.proyectos_institucionales.modelo.Proyecto;
 
 public class DetalleActividadPropia extends AppCompatActivity {
 
-    TextView txtNombre,txtDescripcion,txtFechaInicio,TxtFechaFin,txtResponsable;
+    TextView txtNombre,txtDescripcion,txtFechaInicio,TxtFechaFin,txtResponsable,txtProcentaje;
     Actividad actividad;
     Proyecto proyecto;
     CtlUsuario controladorUsuario;
@@ -34,12 +34,14 @@ public class DetalleActividadPropia extends AppCompatActivity {
         txtFechaInicio = findViewById(R.id.txtFechaInicioActividadD);
         TxtFechaFin = findViewById(R.id.txtFechaFinActividadD);
         txtResponsable = findViewById(R.id.txtResponsableD);
+        txtProcentaje = findViewById(R.id.txtPorcentajeDA);
 
         txtNombre.setText(actividad.getNombre());
         txtDescripcion.setText(actividad.getDescripcion());
         txtFechaInicio.setText(actividad.getFechaInicio());
         TxtFechaFin.setText(actividad.getFechaFin());
         txtResponsable.setText(controladorUsuario.buscarUsuarioPorID(actividad.getIdResponsable()).getNombres()+" "+controladorUsuario.buscarUsuarioPorID(actividad.getIdResponsable()).getApellidos());
+        txtProcentaje.setText(actividad.getPorcentajeDesarrollado());
 
     }
 

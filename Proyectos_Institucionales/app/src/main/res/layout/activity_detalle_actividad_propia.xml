@@ -68,6 +68,16 @@
             android:textColor="@color/blue"
             android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/txtPorcentajeDA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:paddingLeft="10dp"
+            android:text="Bienvenido : "
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
+
         <Button
             android:id="@+id/btnEliminar"
             android:layout_width="match_parent"
