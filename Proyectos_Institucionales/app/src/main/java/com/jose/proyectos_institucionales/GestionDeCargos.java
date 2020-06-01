@@ -18,8 +18,6 @@ public class GestionDeCargos extends AppCompatActivity {
     CtlCargo controlaroCargo;
     Proyecto proyecto;
 
-    Integer idProyecto,salario;
-    String nombre,horario,descripcion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +45,6 @@ public class GestionDeCargos extends AppCompatActivity {
         if (!txtNombre.getText().toString().equals("")&& !txtSalario.getText().toString().equals("")
         && !txtHorario.getText().toString().equals("") && !txtDescripcion.getText().toString().equals("")){
 
-            idProyecto = proyecto.getId();
-            salario = Integer.parseInt(txtSalario.getText().toString());
-            nombre = txtNombre.getText().toString();
-            descripcion = txtDescripcion.getText().toString();
-            horario = txtHorario.getText().toString();
 
             controlaroCargo.guardarCargo(proyecto.getId(),txtNombre.getText().toString(),txtDescripcion.getText().toString(),
                     txtHorario.getText().toString(),Integer.parseInt(txtSalario.getText().toString()));

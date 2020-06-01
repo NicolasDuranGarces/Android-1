@@ -49,4 +49,10 @@ public class DetalleProyectoPropio extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
+
+    public void gestionActividad(View view){
+        Intent intent = new Intent(this, ListaActividadesPropio.class);
+        intent.putExtra("objProyecto", proyecto);
+        startActivity(intent);
+    }
 }
