@@ -13,9 +13,9 @@ import com.jose.proyectos_institucionales.modelo.Proyecto;
 public class DetalleProyectoPropio extends AppCompatActivity {
 
     TextView txtNombre,txtFechaInicio,txtFechaFin,txtPorcentaje,txtTiempo;
-    Integer idProyecto;
+    Proyecto proyecto;
     CtlProyecto controladorProyecto;
-    Proyecto pro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,27 +29,24 @@ public class DetalleProyectoPropio extends AppCompatActivity {
         controladorProyecto = new CtlProyecto(this);
 
         Bundle bundle = getIntent().getExtras();
-        idProyecto = bundle.getInt("idProyecto");
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 
-        pro = controladorProyecto.buscarProyecto(idProyecto);
-
-        txtNombre.setText("Nombre: "+pro.getNombre());
-        txtFechaInicio.setText("Fecha Incio: "+pro.getFechaInicio());
-        txtFechaFin.setText("Fecha Fin: "+pro.getFechaFin());
-        txtPorcentaje.setText("% Terminado: "+pro.getPorcentajeDesarrollado());
+        txtNombre.setText("Nombre: "+proyecto.getNombre());
+        txtFechaInicio.setText("Fecha Incio: "+proyecto.getFechaInicio());
+        txtFechaFin.setText("Fecha Fin: "+proyecto.getFechaFin());
+        txtPorcentaje.setText("% Terminado: "+proyecto.getPorcentajeDesarrollado());
 
     }
 
     public void gestionIntegranes(View view){
         Intent intent = new Intent(this, GestionIntegrantesProyecto.class);
-        intent.putExtra("idProyecto", idProyecto);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 
     public void gestionCargo(View view){
         Intent intent = new Intent(this, ListadoDeCargos.class);
-        intent.putExtra("idProyecto", idProyecto);
-        intent.putExtra("idDirector", pro.getIdDirector());
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 }

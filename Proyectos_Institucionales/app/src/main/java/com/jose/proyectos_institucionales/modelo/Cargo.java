@@ -7,23 +7,26 @@ public class Cargo {
     private String nombre;
     private String descripcion;
     private String horario;
-    private Integer idDirector;
+    private Integer salario;
 
-    public Cargo(Integer id, Integer idProyecto, String nombre, String descripcion, String horario, Integer idDirector) {
+    public Cargo() {
+    }
+
+    public Cargo(Integer id, Integer idProyecto, String nombre, String descripcion, String horario, Integer salario) {
         this.id = id;
         this.idProyecto = idProyecto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horario = horario;
-        this.idDirector = idDirector;
+        this.salario = salario;
     }
 
-    public Cargo(Integer idProyecto, String nombre, String descripcion, String horario, Integer idDirector) {
+    public Cargo(Integer idProyecto, String nombre, String descripcion, String horario, Integer salario) {
         this.idProyecto = idProyecto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horario = horario;
-        this.idDirector = idDirector;
+        this.salario = salario;
     }
 
     public Integer getId() {
@@ -66,11 +69,11 @@ public class Cargo {
         this.horario = horario;
     }
 
-    public Integer getIdDirector() {
-        return idDirector;
+    public Integer getSalario() {
+        return salario;
     }
 
-    public void setIdDirector(Integer idDirector) {
-        this.idDirector = idDirector;
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
 }

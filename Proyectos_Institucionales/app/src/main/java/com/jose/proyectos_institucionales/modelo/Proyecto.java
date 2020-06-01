@@ -1,6 +1,8 @@
 package com.jose.proyectos_institucionales.modelo;
 
-public class Proyecto {
+import java.io.Serializable;
+
+public class Proyecto implements Serializable {
 
     private Integer id;
     private String nombre;

@@ -21,6 +21,7 @@ public class ListadoDeCargos extends AppCompatActivity {
     CtlCargo controladorCargo;
     ArrayList<Cargo> listaCargos;
     Integer idProyecto,idDirector;
+    Proyecto proyecto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,9 @@ public class ListadoDeCargos extends AppCompatActivity {
         controladorCargo = new CtlCargo(this);
 
         Bundle bundle = getIntent().getExtras();
-        idProyecto = bundle.getInt("idProyecto");
-        idDirector = bundle.getInt("idDirector");
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 
-        listaCargos = (ArrayList<Cargo>) controladorCargo.listarCargosProyecto(idProyecto);
+        listaCargos = (ArrayList<Cargo>) controladorCargo.listarCargosProyecto(proyecto.getId());
 
         if (listaCargos.size() != 0){
             cargarLista(listaCargos);
@@ -67,8 +67,7 @@ public class ListadoDeCargos extends AppCompatActivity {
 
     public void registrarCargo(View view){
         Intent intent = new Intent(this, GestionDeCargos.class);
-        intent.putExtra("idProyecto", idProyecto);
-        intent.putExtra("idDirector", idDirector);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 

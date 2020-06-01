@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class Conexion extends SQLiteOpenHelper {
+public class   Conexion extends SQLiteOpenHelper {
 
     private static final String database = "parcial_3.db";
     private static final SQLiteDatabase.CursorFactory factory = null;

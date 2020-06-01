@@ -15,8 +15,8 @@ public class CtlCargo {
         dao = new CargoDAO(activity);
     }
 
-    public boolean guardarCargo(Integer idProyecto, String nombre, String descripcion, String horario, Integer idDirector){
-        Cargo cargo = new Cargo(idProyecto, nombre, descripcion, horario, idDirector);
+    public boolean guardarCargo(Integer idProyecto, String nombre, String descripcion, String horario, Integer salario){
+        Cargo cargo = new Cargo(idProyecto, nombre, descripcion, horario, salario);
         return dao.guardar(cargo);
     }
 

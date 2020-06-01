@@ -75,8 +75,8 @@ public class misProyectos extends AppCompatActivity {
 
     public void abrirDetalle(int posicion){
         Intent intent = new Intent(this, DetalleProyectoPropio.class);
-        int reunion = proyectos.get(posicion).getId();
-        intent.putExtra("idProyecto", reunion);
+        Proyecto proyecto = proyectos.get(posicion);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 

@@ -9,27 +9,32 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlCargo;
+import com.jose.proyectos_institucionales.modelo.Proyecto;
 
 import java.util.ArrayList;
 
 public class GestionDeCargos extends AppCompatActivity {
     EditText txtNombre,txtSalario,txtHorario,txtDescripcion;
     CtlCargo controlaroCargo;
-    Integer idProyecto,idDirector;
+    Proyecto proyecto;
+
+    Integer idProyecto,salario;
+    String nombre,horario,descripcion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_de_cargos);
-        controlaroCargo = new CtlCargo(this);
+
         txtNombre = findViewById(R.id.txtNombreCargo);
         txtDescripcion = findViewById(R.id.txtDescripcion);
         txtSalario = findViewById(R.id.txtSalario);
-        txtHorario = findViewById(R.id.txtDescripcion);
+        txtHorario = findViewById(R.id.txtHorario);
+
+        controlaroCargo = new CtlCargo(this);
 
         Bundle bundle = getIntent().getExtras();
-        idProyecto = bundle.getInt("idProyecto");
-        idDirector = bundle.getInt("idDirector");
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 
     }
 
@@ -41,10 +46,18 @@ public class GestionDeCargos extends AppCompatActivity {
     public void registroCargo(View view){
         if (!txtNombre.getText().toString().equals("")&& !txtSalario.getText().toString().equals("")
         && !txtHorario.getText().toString().equals("") && !txtDescripcion.getText().toString().equals("")){
-            controlaroCargo.guardarCargo(idProyecto,txtNombre.getText().toString(),txtDescripcion.getText().toString(),
-                    txtHorario.getText().toString(),idDirector);
+
+            idProyecto = proyecto.getId();
+            salario = Integer.parseInt(txtSalario.getText().toString());
+            nombre = txtNombre.getText().toString();
+            descripcion = txtDescripcion.getText().toString();
+            horario = txtHorario.getText().toString();
+
+            controlaroCargo.guardarCargo(proyecto.getId(),txtNombre.getText().toString(),txtDescripcion.getText().toString(),
+                    txtHorario.getText().toString(),Integer.parseInt(txtSalario.getText().toString()));
             Toast.makeText( getApplicationContext(), "Se Registro Correctamente", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this , ListadoDeCargos.class);
+            Intent intent = new Intent(this , DetalleProyectoPropio.class);
+            intent.putExtra("objProyecto", proyecto);
             startActivity(intent);
 
         }else {

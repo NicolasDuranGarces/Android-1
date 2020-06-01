@@ -30,17 +30,11 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
 
     AlertDialog.Builder ad;
     EditText txtCedula;
-    Integer idProyecto;
-
     CtlUsuario controladorUsuario;
     CtlIntegrante controladorIntegrantes;
     CtlCargo controladorCargo;
-
-
     ListView listVieww;
-
-    Integrante integrante;
-
+    Proyecto proyecto;
     ArrayList<Integrante> listaDeIntegrantes;
 
 
@@ -53,13 +47,13 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
         listVieww = findViewById(R.id.listVieww);
 
         Bundle bundle = getIntent().getExtras();
-        idProyecto = bundle.getInt("idProyecto");
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 
         controladorUsuario = new CtlUsuario(this);
         controladorIntegrantes = new CtlIntegrante(this);
         controladorCargo = new CtlCargo(this);
 
-        listaDeIntegrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(idProyecto);
+        listaDeIntegrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
 
 
         if (listaDeIntegrantes.size()!=0){
@@ -69,14 +63,16 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
 
     }
 
-    public void seleccionarCargo(){
+    public void seleccionarCargo(Integrante integranteMed){
         Intent intent = new Intent(this , EleccionCargoUsuario.class);
-        intent.putExtra("integrante",integrante);
+        intent.putExtra("objIntegrante",integranteMed);
+        intent.putExtra("objProyecto",proyecto);
         startActivity(intent);
     }
 
     public void regresar(View view){
         Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        intent.putExtra("objProyecto",proyecto);
         startActivity(intent);
     }
 
@@ -102,7 +98,6 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
 
     }
 
-
     public void buscarUsuarioAgregar(View view) {
         if (!txtCedula.getText().toString().equals("")) {
             final Usuario usuario = controladorUsuario.buscarUsuarioCedula(txtCedula.getText().toString());
@@ -114,9 +109,8 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
                 ad.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        integrante.setIdProyecto(idProyecto);
-                        integrante.setIdUsuario(usuario.getId());
-                        seleccionarCargo();
+                        Integrante integranteMed = new Integrante(proyecto.getId(),usuario.getId(),null);
+                        seleccionarCargo(integranteMed);
                     }
                 });
                 ad.setNegativeButton("No", new DialogInterface.OnClickListener() {

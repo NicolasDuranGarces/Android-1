@@ -24,7 +24,7 @@ public class CargoDAO {
         registro.put("nombre", cargo.getNombre());
         registro.put("descripcion", cargo.getDescripcion());
         registro.put("horario", cargo.getHorario());
-        registro.put("idDirector", cargo.getIdDirector());
+        registro.put("salario", cargo.getSalario());
 
         return conex.ejecutarInsert("cargo", registro);
     }
@@ -36,7 +36,7 @@ public class CargoDAO {
                 "nombre, " +
                 "descripcion, " +
                 "horario, " +
-                "idDirector " +
+                "salario " +
                 "from cargo " +
                 "where id= " + id ;
         Cursor temp = conex.ejecutarSearch(consulta);
@@ -71,22 +71,22 @@ public class CargoDAO {
         registro.put("nombre", cargo.getNombre());
         registro.put("descripcion", cargo.getDescripcion());
         registro.put("horario", cargo.getHorario());
-        registro.put("idDirector", cargo.getIdDirector());
+        registro.put("salario", cargo.getSalario());
 
         return conex.ejecutarUpdate(tabla, condicion, registro);
 
     }
 
     public List<Cargo> listarCargosProyecto(Integer idProyecto){
-        List<Cargo> listaCargos = new ArrayList<Cargo>();
+        List<Cargo> listaCargos = new ArrayList<>();
         String consulta = "select id, " +
                 "idProyecto, " +
                 "nombre, " +
                 "descripcion, " +
                 "horario, " +
-                "idDirector " +
+                "salario " +
                 "from cargo " +
-                "where idProyecto= " + idProyecto ;
+                "where idProyecto = " + idProyecto ;
         Cursor temp = conex.ejecutarSearch(consulta);
 
         if(temp.moveToFirst()){

@@ -5,9 +5,10 @@ import android.app.Activity;
 import com.jose.proyectos_institucionales.dao.ProyectoDAO;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CtlProyecto {
+public class CtlProyecto  {
 
     ProyectoDAO dao;
 

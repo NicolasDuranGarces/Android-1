@@ -11,14 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/findototal"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:orientation="vertical">
 
 
 
@@ -52,7 +50,8 @@
         <ListView
             android:id="@+id/listVieww"
             android:layout_width="match_parent"
-            android:layout_height="532dp">
+            android:layout_height="498dp"
+            android:layout_marginBottom="20dp">
 
         </ListView>
 
@@ -60,7 +59,9 @@
             android:id="@+id/registrar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
             android:onClick="regresar"
             android:text="Regresar"

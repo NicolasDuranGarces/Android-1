@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class EleccionCargoUsuario extends AppCompatActivity {
 
     Integrante integrante;
+    Proyecto proyecto;
     CtlCargo controladorCargo;
     ArrayList<Cargo> listaCargos ;
     CtlIntegrante controladorIntegrante;
@@ -32,11 +33,11 @@ public class EleccionCargoUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_cargo_usuario);
 
-        listView = findViewById(R.id.listView);
-
+        listView = findViewById(R.id.listaViewIntegrantes);
 
         Bundle bundle = getIntent().getExtras();
-        integrante  = (Integrante) bundle.getSerializable("integrante");
+        integrante = (Integrante) bundle.getSerializable("objIntegrante");
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 
         controladorCargo = new CtlCargo(this);
         controladorIntegrante = new CtlIntegrante(this);
@@ -51,6 +52,7 @@ public class EleccionCargoUsuario extends AppCompatActivity {
 
     public void regresarPersonas(){
         Intent intent = new Intent(this , GestionIntegrantesProyecto.class);
+        intent.putExtra("objProyecto",proyecto);
         startActivity(intent);
     }
 
