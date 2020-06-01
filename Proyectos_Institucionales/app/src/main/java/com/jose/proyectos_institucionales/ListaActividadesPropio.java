@@ -22,6 +22,7 @@ public class ListaActividadesPropio extends AppCompatActivity {
     CtlActividad controladorActividad;
     Proyecto proyecto;
     ArrayList<Actividad> actividades;
+    Actividad actividad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class ListaActividadesPropio extends AppCompatActivity {
         listaViewActividades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
-
+                detalleActividadPropio(posicion);
             }
         });
 
@@ -66,5 +67,17 @@ public class ListaActividadesPropio extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
+
+    public void detalleActividadPropio(int pos){
+
+        actividad = controladorActividad.buscarActividad(pos);
+
+        Intent intent = new Intent(this , DetalleActividadPropia.class);
+        intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
+
+
 
 }
