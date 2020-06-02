@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GestionDeTareas">
+    tools:context=".RegistroRecursos">
+
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/findototal"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,35 +20,37 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtNombrePersona"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:text="Registro Tarea"
+            android:text="Registro De Recurso"
             android:textColor="@color/blue"
             android:textSize="24sp"
-            android:paddingLeft="20dp"/>
+            android:paddingLeft="50dp"/>
+
+
 
         <EditText
-            android:id="@+id/txtNombreTarea"
+            android:id="@+id/txtNombreRecurso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
-            android:autofillHints=""
+            android:layout_marginBottom="10dp"
             android:background="@drawable/input"
             android:ems="10"
-            android:hint="Nombre TArea"
+            android:hint="Nombre"
             android:inputType="textPersonName"
             android:padding="10dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:paddingRight="10dp"
+            />
 
         <EditText
-            android:id="@+id/txtDescripcionTarea"
+            android:id="@+id/txtDescripcionRecurso"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
@@ -61,42 +65,37 @@
             android:padding="10dp"
             android:gravity="top"/>
 
-
-
         <EditText
-            android:id="@+id/txtFechaIniciotarea"
+            android:id="@+id/txtCantidadRecurso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
-            android:autofillHints=""
+            android:layout_marginBottom="10dp"
             android:background="@drawable/input"
             android:ems="10"
-            android:hint="Fecha de Inicio"
-            android:inputType="textPersonName"
+            android:hint="Cantidad"
+            android:inputType="number"
             android:padding="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
 
         <EditText
-            android:id="@+id/txtFechaFinTarea"
+            android:id="@+id/txtUbiacionRecurso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
-            android:autofillHints=""
+            android:layout_marginBottom="10dp"
             android:background="@drawable/input"
             android:ems="10"
-            android:hint="Fecha Fin Actividad"
+            android:hint="Ubicacion"
             android:inputType="textPersonName"
             android:padding="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
-
 
         <Button
             android:id="@+id/registrar"
@@ -104,8 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/btn_redondeado_blanco"
-
-            android:onClick="registrar"
+            android:onClick="registrarRecurso"
             android:text="Guardar"
             android:textColor="@color/white" />
 
@@ -119,4 +117,6 @@
             android:text="Regresar"
             android:textColor="@color/white" />
     </LinearLayout>
+
+
 </RelativeLayout>

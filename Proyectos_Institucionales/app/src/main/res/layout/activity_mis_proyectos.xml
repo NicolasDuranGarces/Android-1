@@ -49,18 +49,6 @@
             android:textColor="@color/white"
             android:textSize="16dp" />
 
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:elevation="5dp"
-            android:onClick="crearProyecto"
-            android:text="Regresar"
-
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
     </LinearLayout>
 
 </RelativeLayout>

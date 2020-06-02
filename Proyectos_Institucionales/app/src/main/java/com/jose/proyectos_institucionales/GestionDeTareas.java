@@ -3,6 +3,7 @@ package com.jose.proyectos_institucionales;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -85,10 +86,23 @@ public class GestionDeTareas extends AppCompatActivity {
             controladorTarea.guardarTarea(actividad.getId(),txtnombre.getText().toString(),txtDescripcion.getText().toString(),txtfechaInicio.getText().toString(),
                     txtfechaFin.getText().toString(),0);
             Toast.makeText( getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this , DetalleActividadPropia.class);
+            intent.putExtra("objProyecto", proyecto);
+            intent.putExtra("objActividad", actividad);
+            startActivity(intent);
+
         }else {
             Toast.makeText( getApplicationContext(), "Todos Los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
 
         }
 
     }
+
+    public void regresar (View view){
+        Intent intent = new Intent(this , DetalleActividadPropia.class);
+        intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.jose.proyectos_institucionales.modelo;
 
-public class Tarea {
+import java.io.Serializable;
+
+public class Tarea implements Serializable {
 
     private Integer id;
     private Integer idActividad;

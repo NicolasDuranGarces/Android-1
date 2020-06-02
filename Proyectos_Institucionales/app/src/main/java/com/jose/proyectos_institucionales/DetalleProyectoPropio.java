@@ -12,24 +12,27 @@ import com.jose.proyectos_institucionales.modelo.Proyecto;
 
 public class DetalleProyectoPropio extends AppCompatActivity {
 
-    TextView txtNombre,txtFechaInicio,txtFechaFin,txtPorcentaje,txtTiempo;
+    TextView txtNombre,txtFechaInicio,txtFechaFin,txtPorcentaje;
     Proyecto proyecto;
     CtlProyecto controladorProyecto;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_proyecto_propio);
-        txtNombre = findViewById(R.id.txtNombreProyect);
-        txtFechaInicio = findViewById(R.id.txtFechaInicioPro);
-        txtFechaFin = findViewById(R.id.txtFechaFinProyecto);
-        txtTiempo = findViewById(R.id.txtTiempo);
-        txtPorcentaje = findViewById(R.id.txtNombreProyect);
+
+        txtNombre = findViewById(R.id.txtNomProyectoPro);
+        txtFechaInicio = findViewById(R.id.txtFechaInicioProy);
+        txtFechaFin = findViewById(R.id.txtFechaFinProyectoy);
+
+        txtPorcentaje = findViewById(R.id.txtPorcentaje);
 
         controladorProyecto = new CtlProyecto(this);
 
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+        idUsuario = bundle.getInt("idUsuario");
 
         txtNombre.setText("Nombre: "+proyecto.getNombre());
         txtFechaInicio.setText("Fecha Incio: "+proyecto.getFechaInicio());
@@ -55,4 +58,16 @@ public class DetalleProyectoPropio extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
+
+    public void gestionRecursos(View view){
+        Intent intent = new Intent(this, RegistroRecursos.class);
+        intent.putExtra("objProyecto", proyecto);
+        startActivity(intent);
+    }
+    public  void regresar(View view){
+        Intent intent = new Intent(this, misProyectos.class);
+        intent.putExtra("idUsuario",idUsuario);
+        startActivity(intent);
+    }
+
 }

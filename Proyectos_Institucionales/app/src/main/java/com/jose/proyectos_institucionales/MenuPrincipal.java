@@ -48,4 +48,12 @@ public class MenuPrincipal extends AppCompatActivity {
 
     }
 
+    public void salir(View view){
+        Intent intent = new Intent(this , MainActivity.class);
+        startActivity(intent);
+        this.finish();
+
+    }
+
+
 }

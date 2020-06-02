@@ -18,12 +18,10 @@ import java.util.ArrayList;
 
 public class misProyectos extends AppCompatActivity {
     Integer idUsuario;
-    String cedula;
     ArrayList<Proyecto> proyectos;
     ListView listaProyectos;
     CtlProyecto controladorProyecto;
     CtlUsuario controladorUsuario;
-    Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class misProyectos extends AppCompatActivity {
         controladorUsuario = new CtlUsuario(this);
 
         Bundle bundle = getIntent().getExtras();
-        cedula = bundle.getString("dni");
         idUsuario = bundle.getInt("idUsuario");
 
         proyectos = (ArrayList<Proyecto>) controladorProyecto.listarProyectosQueDirijo(idUsuario);
@@ -50,7 +47,6 @@ public class misProyectos extends AppCompatActivity {
 
     public void crearProyecto(View view){
         Intent intent = new Intent(this , CrearProyecto.class);
-        intent.putExtra("dni",cedula);
         intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
@@ -77,7 +73,12 @@ public class misProyectos extends AppCompatActivity {
         Intent intent = new Intent(this, DetalleProyectoPropio.class);
         Proyecto proyecto = proyectos.get(posicion);
         intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
+
+
+
+
 
 }

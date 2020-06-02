@@ -41,14 +41,21 @@ public class DetalleActividadPropia extends AppCompatActivity {
         txtFechaInicio.setText(actividad.getFechaInicio());
         TxtFechaFin.setText(actividad.getFechaFin());
         txtResponsable.setText(controladorUsuario.buscarUsuarioPorID(actividad.getIdResponsable()).getNombres()+" "+controladorUsuario.buscarUsuarioPorID(actividad.getIdResponsable()).getApellidos());
-        txtProcentaje.setText(actividad.getPorcentajeDesarrollado());
+        //txtProcentaje.setText(actividad.getPorcentajeDesarrollado());
 
     }
 
     public void listarTareas(View view){
-        Intent intent = new Intent(this , RegistrarActividad.class);
+        Intent intent = new Intent(this , ListadoDeTareasPropias.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
+
+    public void regresar(View view){
+        Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        intent.putExtra("objProyecto",proyecto);
+        intent.putExtra("objActividad",actividad);
         startActivity(intent);
     }
 }

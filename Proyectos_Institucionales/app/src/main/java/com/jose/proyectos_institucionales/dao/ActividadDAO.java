@@ -42,7 +42,7 @@ public class ActividadDAO {
                 "fechaFin, " +
                 "porcentajeDesarrollado " +
                 "from actividad " +
-                "where id= " + id ;
+                "where id = " + id ;
         Cursor temp = conex.ejecutarSearch(consulta);
 
         if (temp.getCount() > 0){

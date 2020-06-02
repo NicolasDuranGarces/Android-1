@@ -20,6 +20,10 @@ public class CtlRecurso {
         return dao.guardar(recurso);
     }
 
+    public boolean guardarRecursoTarea(Integer idTarea , Integer idRecurso){
+        return dao.guardarIntermedia(idTarea,idRecurso);
+    }
+
     public Recurso buscarRecurso(Integer id){
         return dao.buscar(id);
     }

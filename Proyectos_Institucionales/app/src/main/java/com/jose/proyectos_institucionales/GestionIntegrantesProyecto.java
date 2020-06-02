@@ -78,16 +78,19 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
 
     public void cargarLista(ArrayList<Integrante> lista) {
 
-        ArrayList<String> nombreCargo = new ArrayList<>();
+        ArrayList<String> nombreIntegrantes = new ArrayList<>();
         String entrada;
         for (Integrante integrante : lista){
-            int idUsuario = integrante.getIdUsuario();
-            Usuario usuario = controladorUsuario.buscarUsuarioPorID(idUsuario);
-            Cargo cargo = controladorCargo.buscarCargo(integrante.getId());
+
+
+            Usuario usuario = controladorUsuario.buscarUsuarioPorID(integrante.getIdUsuario());
+
+            Cargo cargo = controladorCargo.buscarCargo(integrante.getIdCargo());
+
             entrada = usuario.getNombres() + " "+ usuario.getApellidos() + " " + cargo.getNombre();
-            nombreCargo.add(entrada);
+            nombreIntegrantes.add(entrada);
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreCargo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreIntegrantes);
         listVieww.setAdapter(adapter);
         listVieww.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

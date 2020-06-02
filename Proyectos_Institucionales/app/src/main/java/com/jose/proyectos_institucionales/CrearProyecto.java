@@ -109,7 +109,9 @@ public class CrearProyecto extends AppCompatActivity {
     }
 
     public void regresar(View view){
-        Intent intent = new Intent(this , MainActivity.class);
+        Intent intent = new Intent(this , misProyectos.class);
+        intent.putExtra("dni",cedula);
+        intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
 

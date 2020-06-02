@@ -29,6 +29,14 @@ public class RecursoDAO {
         return conex.ejecutarInsert("recurso", registro);
     }
 
+    public boolean guardarIntermedia(Integer idTarea ,Integer idRecurso){
+        ContentValues registro = new ContentValues();
+        registro.put("idTarea", idTarea);
+        registro.put("idRecurso", idRecurso );
+
+        return conex.ejecutarInsert("recurso_tarea", registro);
+    }
+
     public Recurso buscar(Integer id){
         Recurso recurso = null;
         String consulta = "select id, " +

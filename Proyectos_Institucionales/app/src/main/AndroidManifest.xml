@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GestionDeTareas"></activity>
+        <activity android:name=".ListadoDeRecursos"></activity>
+        <activity android:name=".RegistroRecursos" />
+        <activity android:name=".DetalleTarea" />
+        <activity android:name=".GestionDeTareas" />
         <activity android:name=".ListadoDeTareasPropias" />
         <activity android:name=".DetalleActividadPropia" />
         <activity android:name=".RegistrarActividad" />

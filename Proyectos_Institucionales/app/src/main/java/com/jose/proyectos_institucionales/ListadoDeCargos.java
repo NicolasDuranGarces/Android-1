@@ -52,17 +52,10 @@ public class ListadoDeCargos extends AppCompatActivity {
         listVieww.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
-                abrirDetalle(posicion);
+
             }
         });
 
-    }
-
-    public void abrirDetalle(int posicion){
-        Intent intent = new Intent(this, DetalleProyectoPropio.class);
-        int idCargp = listaCargos.get(posicion).getId();
-        intent.putExtra("idCargo", idCargp);
-        startActivity(intent);
     }
 
     public void registrarCargo(View view){
@@ -73,6 +66,7 @@ public class ListadoDeCargos extends AppCompatActivity {
 
     public void regresar(View view){
         Intent intent = new Intent(this, DetalleProyectoPropio.class);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 }

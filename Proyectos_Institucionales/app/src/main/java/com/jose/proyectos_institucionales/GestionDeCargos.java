@@ -38,13 +38,13 @@ public class GestionDeCargos extends AppCompatActivity {
 
     public void regresar(View view){
         Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 
     public void registroCargo(View view){
         if (!txtNombre.getText().toString().equals("")&& !txtSalario.getText().toString().equals("")
         && !txtHorario.getText().toString().equals("") && !txtDescripcion.getText().toString().equals("")){
-
 
             controlaroCargo.guardarCargo(proyecto.getId(),txtNombre.getText().toString(),txtDescripcion.getText().toString(),
                     txtHorario.getText().toString(),Integer.parseInt(txtSalario.getText().toString()));

@@ -106,7 +106,7 @@ public class UsuarioDAO {
                 "clave, " +
                 "email " +
                 "from usuario " +
-                "where id = '" + idUsuario + "'";
+                "where id = " + idUsuario + "";
         Cursor temp = conex.ejecutarSearch(consulta);
 
         if (temp.getCount() > 0) {

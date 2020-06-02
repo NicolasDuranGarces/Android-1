@@ -61,16 +61,34 @@ public class ListadoDeTareasPropias extends AppCompatActivity {
         listViewTareas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
-
+                datalleTarea(posicion);
             }
         });
 
     }
 
     public void crearTarea(View view){
-        Intent intent = new Intent(this , RegistrarActividad.class);
+        Intent intent = new Intent(this , GestionDeTareas.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         startActivity(intent);
     }
+
+    public  void datalleTarea(int posicion){
+
+        Tarea tarea = listaTareas.get(posicion);
+        Intent intent = new Intent(this , DetalleTarea.class);
+        intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("objActividad", actividad);
+        intent.putExtra("objTarea", tarea);
+        startActivity(intent);
+    }
+
+    public void regresar(View view){
+        Intent intent = new Intent(this , DetalleActividadPropia.class);
+        intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
+
 }

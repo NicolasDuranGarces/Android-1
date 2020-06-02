@@ -109,9 +109,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="listarTareas"
             android:text="Listar Tareas"
             android:textColor="@color/white" />
-
 
 
         <Button
@@ -122,6 +122,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="regresar"
             android:text="Regresar"
             android:textColor="@color/white" />
     </LinearLayout>

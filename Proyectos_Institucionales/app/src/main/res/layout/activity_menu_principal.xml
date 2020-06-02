@@ -82,7 +82,9 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:text="Salir" />
+            android:onClick="salir"
+            android:text="Salir"
+            android:textColor="@color/white"/>
 
 
 

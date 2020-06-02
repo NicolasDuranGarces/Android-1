@@ -1,7 +1,10 @@
 package com.jose.proyectos_institucionales;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 
 public class EleccionCargoUsuario extends AppCompatActivity {
 
+    AlertDialog.Builder ad;
     Integrante integrante;
     Proyecto proyecto;
     CtlCargo controladorCargo;
@@ -57,11 +61,12 @@ public class EleccionCargoUsuario extends AppCompatActivity {
     }
 
 
-    public void cargarLista(ArrayList<Cargo> lista) {
-        ArrayList<String> nombreCargo = new ArrayList<>();
+
+    public void cargarLista(final ArrayList<Cargo> lista) {
+        final ArrayList<String> nombreCargo = new ArrayList<>();
         String entrada;
         for (Cargo cargo : lista){
-            entrada=cargo.getNombre() ;
+            entrada=cargo.getId() +" - " +cargo.getNombre();
             nombreCargo.add(entrada);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreCargo);
@@ -69,9 +74,11 @@ public class EleccionCargoUsuario extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
-                integrante.setIdCargo(listaCargos.get(posicion).getId());
+
+                integrante.setIdCargo(lista.get(posicion).getId());
                 controladorIntegrante.guardarIntegrante(integrante.getIdProyecto(),integrante.getIdUsuario(),integrante.getIdCargo());
                 Toast.makeText(getApplicationContext(), "Registro Exitos", Toast.LENGTH_SHORT).show();
+
                 regresarPersonas();
             }
         });

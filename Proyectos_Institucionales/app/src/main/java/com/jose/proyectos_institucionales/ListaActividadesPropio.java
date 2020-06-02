@@ -70,11 +70,17 @@ public class ListaActividadesPropio extends AppCompatActivity {
 
     public void detalleActividadPropio(int pos){
 
-        actividad = controladorActividad.buscarActividad(pos);
+        actividad = controladorActividad.buscarActividad(actividades.get(pos).getId());
 
         Intent intent = new Intent(this , DetalleActividadPropia.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
+
+    public void regresar(View view){
+        Intent intent = new Intent(this , ListaActividadesPropio.class);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 

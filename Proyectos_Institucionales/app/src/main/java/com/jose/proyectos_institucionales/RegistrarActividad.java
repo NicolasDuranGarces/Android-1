@@ -93,15 +93,16 @@ public class RegistrarActividad extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
-
+        integrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
         cargarOpciones();
     }
 
     public void registrar(View view){
         if(!txtnombre.getText().toString().equals("")&&!txtDescripcion.getText().toString().equals("")&&
                 !txtfechaInicio.getText().toString().equals("")&&!txtFechaFin.getText().toString().equals("")){
+                    int id = idResponsable(spinerResponsables.getSelectedItem().toString());
                 controladorActividad.guardarActividad(proyecto.getId(),txtnombre.getText().toString(),txtDescripcion.getText().toString(),
-                        Integer.parseInt(String.valueOf(spinerResponsables.getSelectedItem().toString().charAt(0))),txtfechaInicio.getText().toString(),
+                        id,txtfechaInicio.getText().toString(),
                         txtFechaFin.getText().toString(),0);
             Toast.makeText( getApplicationContext(), "Se Registro Con Exito", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this , DetalleProyectoPropio.class);
@@ -115,15 +116,15 @@ public class RegistrarActividad extends AppCompatActivity {
     }
 
     public void cargarOpciones(){
-        integrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
+
         ArrayList<String> nombreIntegrantes = new ArrayList<>();
         Usuario integrante;
         String entrada;
         Cargo cargo;
         for (int i = 0 ; i < integrantes.size(); i ++){
-            integrante = controladorUsuario.buscarUsuarioPorID(integrantes.get(i).getId());
+            integrante = controladorUsuario.buscarUsuarioPorID(integrantes.get(i).getIdUsuario());
             cargo = controladorCargo.buscarCargo(integrantes.get(i).getId());
-            entrada = integrante.getId() +"-"+integrante.getNombres()+" "+integrante.getApellidos()+"-"+cargo.getNombre();
+            entrada = integrante.getId() +"-"+integrante.getNombres()+"-"+integrante.getApellidos()+"-"+cargo.getNombre();
             nombreIntegrantes.add(entrada);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,nombreIntegrantes);
@@ -135,4 +136,18 @@ public class RegistrarActividad extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
+
+    public Integer idResponsable (String entradaSpinner){
+
+        for (Integrante integrante : integrantes){
+            Usuario usuario = controladorUsuario.buscarUsuarioPorID(integrante.getIdUsuario());
+            Cargo cargo = controladorCargo.buscarCargo(integrante.getIdCargo());
+            String entrada = integrante.getIdUsuario() +"-"+usuario.getNombres()+"-"+usuario.getApellidos()+"-"+cargo.getNombre();
+            if (entrada.equals(entradaSpinner)){
+                return  integrante.getIdUsuario();
+            }
+        }
+        return null;
+    }
+
 }
