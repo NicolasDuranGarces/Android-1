@@ -61,9 +61,10 @@ public class RegistroUsuario extends AppCompatActivity {
         controladorUsuario = new CtlUsuario(this);
 
         Bundle bundle = getIntent().getExtras();
+
         idUsuario = bundle.getString("dni");
 
-         usuario = controladorUsuario.buscarUsuarioCedula(idUsuario);
+        usuario = controladorUsuario.buscarUsuarioCedula(idUsuario);
 
         if (usuario != null){
             txtFecha.setVisibility(View.GONE);

@@ -82,7 +82,7 @@ public class ListadoDeTareasPropias extends AppCompatActivity {
     public  void datalleTarea(int posicion){
 
         Tarea tarea = listaTareas.get(posicion);
-        Intent intent = new Intent(this , DetalleTarea.class);
+        Intent intent = new Intent(this , DetalleTareaPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         intent.putExtra("objTarea", tarea);

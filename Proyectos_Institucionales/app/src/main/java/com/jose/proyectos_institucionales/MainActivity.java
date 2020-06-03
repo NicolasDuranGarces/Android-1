@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void registrarUsuario(View view){
         Intent intent = new Intent(this , RegistroUsuario.class);
+        intent.putExtra("dni", "");
         startActivity(intent);
     }
 

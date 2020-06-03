@@ -48,13 +48,10 @@ public class DetalleTareaPertenezco extends AppCompatActivity {
         txtdescripcion.setText(tarea.getDescripcion());
         txtFechaInicio.setText(tarea.getFechaInicio());
         txtFechaFin.setText(tarea.getFechaFin());
-        txtporcen.setText(tarea.getPorcentajeDesarrollado());
+        txtporcen.setText(String.valueOf(tarea.getPorcentajeDesarrollado()));
 
     }
 
-    public void listadoDeRecusos (View view){
-
-    }
 
     public void regresar (View view){
         Intent intent = new Intent(this , ListadoDeTareasPertenezco.class);
