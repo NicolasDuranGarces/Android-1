@@ -17,6 +17,7 @@ public class DetalleActividadPropia extends AppCompatActivity {
     Actividad actividad;
     Proyecto proyecto;
     CtlUsuario controladorUsuario;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class DetalleActividadPropia extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         actividad = (Actividad) bundle.getSerializable("objActividad");
+        idUsuario = bundle.getInt("idUsuario");
 
         txtNombre = findViewById(R.id.txtNomnbreActividadD);
         txtDescripcion = findViewById(R.id.txtDescripcionD);
@@ -53,9 +55,10 @@ public class DetalleActividadPropia extends AppCompatActivity {
     }
 
     public void regresar(View view){
-        Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        Intent intent = new Intent(this , ListaActividadesPropio.class);
         intent.putExtra("objProyecto",proyecto);
         intent.putExtra("objActividad",actividad);
+        intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
 }

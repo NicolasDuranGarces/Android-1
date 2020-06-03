@@ -23,6 +23,7 @@ public class ListaActividadesPropio extends AppCompatActivity {
     Proyecto proyecto;
     ArrayList<Actividad> actividades;
     Actividad actividad;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class ListaActividadesPropio extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+        idUsuario = bundle.getInt("idUsuario");
+
 
         controladorActividad = new CtlActividad(this);
 
@@ -81,7 +84,7 @@ public class ListaActividadesPropio extends AppCompatActivity {
     public void regresar(View view){
         Intent intent = new Intent(this , DetalleProyectoPropio.class);
         intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("idUsuario", proyecto.getIdDirector());
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 

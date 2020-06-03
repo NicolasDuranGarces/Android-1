@@ -50,10 +50,11 @@ public class DetalleTarea extends AppCompatActivity {
     }
 
     public void regresar (View view){
-        Intent intent = new Intent(this , DetalleActividadPropia.class);
+        Intent intent = new Intent(this , ListadoDeTareasPropias.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         intent.putExtra("objTarea", tarea);
+        intent.putExtra("idUsuario", proyecto.getIdDirector());
         startActivity(intent);
     }
 
