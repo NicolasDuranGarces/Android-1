@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlProyecto;
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
-import com.jose.proyectos_institucionales.modelo.Cargo;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
-import com.jose.proyectos_institucionales.modelo.Usuario;
 
 public class DetalleProyectoPropio extends AppCompatActivity {
 

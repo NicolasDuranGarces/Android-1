@@ -49,6 +49,7 @@ public class misProyectos extends AppCompatActivity {
 
     public void crearProyecto(View view){
         Intent intent = new Intent(this , CrearProyecto.class);
+        intent.putExtra("dni",dniUsurio);
         intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }

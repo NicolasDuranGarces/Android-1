@@ -89,8 +89,8 @@ public class CrearProyecto extends AppCompatActivity {
         });
 
         Bundle bundle = getIntent().getExtras();
-        cedula = bundle.getString("dni");
         idUsuario = bundle.getInt("idUsuario");
+        cedula = bundle.getString("dni");
 
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
 

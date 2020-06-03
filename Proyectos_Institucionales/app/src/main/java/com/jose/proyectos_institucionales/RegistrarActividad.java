@@ -38,6 +38,7 @@ public class RegistrarActividad extends AppCompatActivity {
     ArrayList<Integrante> integrantes;
     Actividad actividad;
     Button btnRegistrar,btnActilizar;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,7 @@ public class RegistrarActividad extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         actividad = (Actividad) bundle.getSerializable("objActividad");
+        idUsuario = bundle.getInt("idUsuario");
         integrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
 
 
@@ -131,8 +133,9 @@ public class RegistrarActividad extends AppCompatActivity {
                         id,txtfechaInicio.getText().toString(),
                         txtFechaFin.getText().toString(),0);
             Toast.makeText( getApplicationContext(), "Se Registro Con Exito", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this , DetalleProyectoPropio.class);
+            Intent intent = new Intent(this ,ListaActividadesPropio.class);
             intent.putExtra("objProyecto", proyecto);
+            intent.putExtra("idUsuario", idUsuario);
             startActivity(intent);
 
         }else {

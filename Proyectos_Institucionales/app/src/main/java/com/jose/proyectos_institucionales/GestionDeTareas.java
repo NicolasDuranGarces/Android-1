@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,15 +14,19 @@ import android.widget.Toast;
 import com.jose.proyectos_institucionales.controlador.CtlTarea;
 import com.jose.proyectos_institucionales.modelo.Actividad;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
+import com.jose.proyectos_institucionales.modelo.Tarea;
 
 import java.util.Calendar;
 
 public class GestionDeTareas extends AppCompatActivity {
 
-    EditText txtnombre,txtfechaInicio,txtfechaFin,txtDescripcion;
+    EditText txtnombre,txtfechaInicio,txtfechaFin,txtDescripcion,porcentaje;
     Proyecto proyecto;
     Actividad actividad;
     CtlTarea controladorTarea;
+    Tarea tarea;
+    Button btnRegistrar,btnActilizar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,7 @@ public class GestionDeTareas extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         actividad = (Actividad) bundle.getSerializable("objActividad");
+        tarea = (Tarea) bundle.getSerializable("objTarea");
 
         controladorTarea = new CtlTarea(this);
 
@@ -38,6 +44,9 @@ public class GestionDeTareas extends AppCompatActivity {
         txtfechaInicio = findViewById(R.id.txtFechaIniciotarea);
         txtfechaFin =  findViewById(R.id.txtFechaFinTarea);
         txtDescripcion = findViewById(R.id.txtDescripcionTarea);
+        porcentaje = findViewById(R.id.porcentaje);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnActilizar = findViewById(R.id.btnActilizar);
 
 
         txtfechaInicio.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +87,20 @@ public class GestionDeTareas extends AppCompatActivity {
             }
         });
 
+        if (tarea != null){
+            porcentaje.setVisibility(View.VISIBLE);
+            btnActilizar.setVisibility(View.VISIBLE);
+            btnRegistrar.setVisibility(View.GONE);
+            porcentaje.setText(String.valueOf(proyecto.getPorcentajeDesarrollado()));
+            txtnombre.setText(tarea.getNombre());
+            txtfechaInicio.setText(tarea.getFechaInicio());
+            txtfechaFin.setText(tarea.getFechaFin());
+            txtDescripcion.setText(tarea.getDescripcion());
+
+        }else {
+            porcentaje.setVisibility(View.GONE);
+            btnActilizar.setVisibility(View.GONE);
+        }
 
     }
 
@@ -103,6 +126,24 @@ public class GestionDeTareas extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         startActivity(intent);
+    }
+
+    public void actualizarDatos (View view){
+        if (!txtnombre.getText().toString().equals("") && !txtfechaInicio.getText().toString().equals("")&&!txtfechaFin.getText().toString().equals("")){
+            controladorTarea.modificarTarea(tarea.getId(),actividad.getId(),txtnombre.getText().toString(),txtDescripcion.getText().toString(),txtfechaInicio.getText().toString(),
+                    txtfechaFin.getText().toString(),Integer.parseInt(porcentaje.getText().toString()));
+            tarea = controladorTarea.buscarTarea(tarea.getId());
+            Toast.makeText( getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this , DetalleTarea.class);
+            intent.putExtra("objProyecto", proyecto);
+            intent.putExtra("objActividad", actividad);
+            intent.putExtra("objTarea", tarea);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText( getApplicationContext(), "Todos Los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }
