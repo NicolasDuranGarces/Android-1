@@ -21,6 +21,7 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
     Actividad actividad;
     Proyecto proyecto;
     CtlUsuario controladorUsuario;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         actividad = (Actividad) bundle.getSerializable("objActividad");
+        idUsuario = bundle.getInt("idUsuario");
 
         txtNombre = findViewById(R.id.txtNomnbreActividadPertenezco);
         txtDescripcion = findViewById(R.id.txtDescripcionD);
@@ -52,13 +54,15 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
         Intent intent = new Intent(this , ListadoDeTareasPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 
     public void regresar(View view){
-        Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        Intent intent = new Intent(this , listadoMisActividades.class);
         intent.putExtra("objProyecto",proyecto);
         intent.putExtra("objActividad",actividad);
+        intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
 }

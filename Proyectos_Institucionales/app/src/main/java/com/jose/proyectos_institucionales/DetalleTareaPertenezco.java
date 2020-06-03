@@ -40,18 +40,15 @@ public class DetalleTareaPertenezco extends AppCompatActivity {
     }
 
     public void listadoDeRecusos (View view){
-        Intent intent = new Intent(this , ListadoDeRecursos.class);
-        intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("objActividad", actividad);
-        intent.putExtra("objTarea", tarea);
-        startActivity(intent);
+
     }
 
     public void regresar (View view){
-        Intent intent = new Intent(this , DetalleActividadesPertenezco.class);
+        Intent intent = new Intent(this , ListadoDeTareasPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         intent.putExtra("objTarea", tarea);
+        intent.putExtra("idUsuario", proyecto.getIdDirector());
         startActivity(intent);
     }
 }

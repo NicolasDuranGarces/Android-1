@@ -79,26 +79,40 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
 
-        <TextView
-            android:id="@+id/txtTiempo"
+        <EditText
+            android:id="@+id/txtPorcentajeTerminado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
-            android:text="Tiempo Proyecto : "
-            android:textColor="@color/blue"
-            android:textSize="24sp"
-            android:paddingLeft="40dp"/>
+            android:background="@drawable/input"
+            android:ems="10"
+            android:hint="% Terminado"
+            android:padding="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnRegistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@drawable/btn_redondeado_blanco"
             android:onClick="crearProyecto"
             android:text="Registrar Proyecto"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/actualizarRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="modificarProyecto"
+            android:text="Actulizar Proyecto"
             android:textColor="@color/white" />
 
         <Button

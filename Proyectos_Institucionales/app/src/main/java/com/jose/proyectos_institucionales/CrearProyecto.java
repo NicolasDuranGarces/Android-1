@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlProyecto;
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
+import com.jose.proyectos_institucionales.modelo.Proyecto;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,10 +25,12 @@ import java.util.Locale;
 public class CrearProyecto extends AppCompatActivity {
 
     EditText txtNombre,txtFechaInicio,txtFechaFin;
-    TextView tiempoProyecto;
+    EditText porcentaje;
     CtlProyecto controladorProyecto;
     Integer idUsuario;
     String cedula;
+    Proyecto proyecto;
+    Button btnRegistrar,btnActilizar;
 
 
     @Override
@@ -37,7 +41,10 @@ public class CrearProyecto extends AppCompatActivity {
         txtNombre = findViewById(R.id.txtNombrePro);
         txtFechaInicio = findViewById(R.id.txtFechaInicio);
         txtFechaFin = findViewById(R.id.txtFechaFin);
-        tiempoProyecto = findViewById(R.id.txtTiempo);
+        porcentaje = findViewById(R.id.txtPorcentajeTerminado);
+
+        btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnActilizar = findViewById(R.id.actualizarRegistro);
 
         controladorProyecto = new CtlProyecto(this);
 
@@ -85,13 +92,24 @@ public class CrearProyecto extends AppCompatActivity {
         cedula = bundle.getString("dni");
         idUsuario = bundle.getInt("idUsuario");
 
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+
+        if (proyecto != null){
+            porcentaje.setVisibility(View.VISIBLE);
+            btnActilizar.setVisibility(View.VISIBLE);
+            btnRegistrar.setVisibility(View.GONE);
+            porcentaje.setText(String.valueOf(proyecto.getPorcentajeDesarrollado()));
+        }else {
+            porcentaje.setVisibility(View.GONE);
+            btnActilizar.setVisibility(View.GONE);
+        }
+
 
 
     }
 
     public void crearProyecto(View view){
 
-        calcularTiempo();
 
         if (!txtNombre.getText().toString().equals("")&&!txtFechaFin.getText().toString().equals("")&&!txtFechaInicio.getText().toString().equals("")){
             controladorProyecto.guardarProyecto(txtNombre.getText().toString(),idUsuario,txtFechaInicio.getText().toString(),txtFechaFin.getText().toString(),0);
@@ -115,26 +133,24 @@ public class CrearProyecto extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void calcularTiempo(){
+    public void modificarProyecto(View view){
 
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        if (!txtNombre.getText().toString().equals("")&&!txtFechaFin.getText().toString().equals("")&&!txtFechaInicio.getText().toString().equals("")){
+            controladorProyecto.modificarProyecto(proyecto.getId(),txtNombre.getText().toString(),idUsuario,txtFechaInicio.getText().toString(),txtFechaFin.getText().toString(),Integer.parseInt(porcentaje.getText().toString()));
+            proyecto = controladorProyecto.buscarProyecto(proyecto.getId());
+            Toast.makeText( getApplicationContext(), "Se Actualizo Correctamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this , misProyectos.class);
+            intent.putExtra("dni",cedula);
+            intent.putExtra("idUsuario",idUsuario);
+            intent.putExtra("objProyecto",proyecto);
+            startActivity(intent);
+        }else{
+            Toast.makeText( getApplicationContext(), "Todos los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
 
-            Date dateStart = dateFormat.parse(txtFechaInicio.getText().toString());
-            Date dateEnd = dateFormat.parse(txtFechaFin.getText().toString());
-
-            long difference = Math.abs(dateEnd.getTime() - dateStart.getTime());
-
-            difference= difference / (60 * 60 * 1000);
-            tiempoProyecto.setText((int) difference);
-
-        }catch(Exception e){
-            e.printStackTrace();
         }
 
+
     }
-
-
 
 
 }

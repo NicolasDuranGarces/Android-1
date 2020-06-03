@@ -52,7 +52,7 @@ public class IntegranteDAO {
 
     public boolean eliminar(Integrante integrante){
         String tabla = "integrante";
-        String condicion = "id = " + integrante.getId();
+        String condicion = " id = " + integrante.getId();
         return conex.ejecutarDelete(tabla, condicion);
     }
 

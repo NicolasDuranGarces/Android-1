@@ -126,6 +126,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="modificarProyecto"
             android:text="Modificar Proyecto"
             android:textColor="@color/white" />
 
@@ -137,6 +138,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="eliminarProyecto"
             android:text="Eliminar Proyecto"
             android:textColor="@color/white" />
 

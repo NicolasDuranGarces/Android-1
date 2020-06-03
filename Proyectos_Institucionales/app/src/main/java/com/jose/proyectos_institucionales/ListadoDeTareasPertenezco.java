@@ -25,6 +25,7 @@ public class ListadoDeTareasPertenezco extends AppCompatActivity {
 
     ListView listViewTareas;
     ArrayList<Tarea> listaTareas ;
+    Integer idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class ListadoDeTareasPertenezco extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         actividad = (Actividad) bundle.getSerializable("objActividad");
+        idUsuario = bundle.getInt("idUsuario");
         listViewTareas = findViewById(R.id.listaTareasView);
 
 
@@ -78,6 +80,7 @@ public class ListadoDeTareasPertenezco extends AppCompatActivity {
         Intent intent = new Intent(this , DetalleActividadesPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 }

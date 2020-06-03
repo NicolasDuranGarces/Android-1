@@ -75,9 +75,9 @@ public class listadoMisActividades extends AppCompatActivity {
 
         actividad = controladorActividad.buscarActividad(listaDeACtiviadePertenesco.get(pos).getId());
 
-        Intent intent = new Intent(this , DetalleActividadesPertenezco.class);
+        Intent intent = new Intent(this , ListadoDeProyectoPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("objActividad", actividad);
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 }

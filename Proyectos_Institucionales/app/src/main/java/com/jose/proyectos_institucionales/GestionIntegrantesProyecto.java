@@ -82,7 +82,6 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
         String entrada;
         for (Integrante integrante : lista){
 
-
             Usuario usuario = controladorUsuario.buscarUsuarioPorID(integrante.getIdUsuario());
 
             Cargo cargo = controladorCargo.buscarCargo(integrante.getIdCargo());
@@ -95,7 +94,7 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
         listVieww.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
-
+                abrirInformacion(posicion);
             }
         });
 
@@ -134,4 +133,61 @@ public class GestionIntegrantesProyecto extends AppCompatActivity  {
 
         cargarLista(listaDeIntegrantes);
     }
+
+    public void abrirInformacion(Integer pos){
+        final Context context = this;
+        ad = new AlertDialog.Builder(context);
+        ad.setTitle("Integrantes");
+
+        final Usuario us = controladorUsuario.buscarUsuarioPorID(listaDeIntegrantes.get(pos).getIdUsuario());
+        Cargo car = controladorCargo.buscarCargo(listaDeIntegrantes.get(pos).getIdCargo());
+
+        ad.setMessage("Nombre: "+us.getNombres() +"\n"
+                +"Apellido: "+us.getApellidos()+"\n"
+                +"Cargo:"+car.getNombre());
+        ad.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eliminarUsuario(us.getId(),us.getNombres()+" "+us.getApellidos(),us.getNumeroDocumento());
+             }
+        });
+        ad.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+
+                dialog.cancel();
+            }
+        });
+        ad.show();
+    }
+
+
+    public void eliminarUsuario(final Integer idusuario , String NombreCompleto , String cedula){
+        final Context context = this;
+        ad = new AlertDialog.Builder(context);
+        ad.setTitle("Warning");
+        ad.setMessage("Desea Eliminar a "+"\n"
+                +NombreCompleto+"\n"
+                +"Cedula :" + cedula);
+        ad.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                controladorIntegrantes.eliminarIntegrante(idusuario);
+                listaDeIntegrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
+                cargarLista(listaDeIntegrantes);
+                Toast.makeText(getApplicationContext(), "Se Elimino Correctamente", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        ad.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.cancel();
+            }
+        });
+        ad.show();
+    }
+
 }
