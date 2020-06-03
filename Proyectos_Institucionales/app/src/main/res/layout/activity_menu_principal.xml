@@ -74,8 +74,9 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="editarDatos"
             android:text="Modificar Perfil"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnSalir"

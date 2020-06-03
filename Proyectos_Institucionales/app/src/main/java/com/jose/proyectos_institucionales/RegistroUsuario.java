@@ -61,18 +61,25 @@ public class RegistroUsuario extends AppCompatActivity {
         controladorUsuario = new CtlUsuario(this);
 
         Bundle bundle = getIntent().getExtras();
-        idUsuario = bundle.getString("idUsuario");
+        idUsuario = bundle.getString("dni");
 
          usuario = controladorUsuario.buscarUsuarioCedula(idUsuario);
+
         if (usuario != null){
-            txtFecha.setEnabled(false);
-            txtDNI.setEnabled(false);
-            txtCorreo.setEnabled(false);
+            txtFecha.setVisibility(View.GONE);
+            txtDNI.setVisibility(View.GONE);
+            txtCorreo.setVisibility(View.GONE);
             btnRegistrar.setVisibility(View.GONE);
+            btnActilizar.setVisibility(View.VISIBLE);
+
+            txtNombre.setText(usuario.getNombres());
+            txtApellido.setText(usuario.getApellidos());
+            txtContrasena.setText(usuario.getClave());
+            txtVerificacionContrasena.setText(usuario.getClave());
         }else {
-            txtFecha.setEnabled(true);
-            txtDNI.setEnabled(true);
-            txtCorreo.setEnabled(true);
+            txtFecha.setVisibility(View.VISIBLE);
+            txtDNI.setVisibility(View.VISIBLE);
+            txtCorreo.setVisibility(View.VISIBLE);
             btnRegistrar.setVisibility(View.VISIBLE);
             btnActilizar.setVisibility(View.GONE);
         }

@@ -1,10 +1,15 @@
 package com.jose.proyectos_institucionales;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jose.proyectos_institucionales.controlador.CtlProyecto;
@@ -13,12 +18,13 @@ import com.jose.proyectos_institucionales.modelo.Proyecto;
 
 public class DetalleProyectoPertenezco extends AppCompatActivity {
 
-    TextView txtNombre,txtFechaInicio,txtFechaFin,txtPorcentaje;
+    TextView txtNombre, txtFechaInicio, txtFechaFin, txtPorcentaje;
     CtlProyecto controladorProyecto;
     Proyecto proyecto;
     Integer idUsuario;
     CtlUsuario controladorUsuario;
     String cedula;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +46,25 @@ public class DetalleProyectoPertenezco extends AppCompatActivity {
 
         cedula = controladorUsuario.buscarUsuarioPorID(idUsuario).getNumeroDocumento();
 
-        txtNombre.setText("Nombre: "+proyecto.getNombre());
-        txtFechaInicio.setText("Fecha Incio: "+proyecto.getFechaInicio());
-        txtFechaFin.setText("Fecha Fin: "+proyecto.getFechaFin());
-        txtPorcentaje.setText("% Terminado: "+proyecto.getPorcentajeDesarrollado());
+        txtNombre.setText("Nombre: " + proyecto.getNombre());
+        txtFechaInicio.setText("Fecha Incio: " + proyecto.getFechaInicio());
+        txtFechaFin.setText("Fecha Fin: " + proyecto.getFechaFin());
+        txtPorcentaje.setText("% Terminado: " + proyecto.getPorcentajeDesarrollado());
     }
 
-    public void listadoActividades(View view){
+    public void listadoActividades(View view) {
         Intent intent = new Intent(this, listadoMisActividades.class);
         intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("idUsuario",idUsuario);
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 
 
-    public  void regresar(View view){
+    public void regresar(View view) {
         Intent intent = new Intent(this, MenuPrincipal.class);
-        intent.putExtra("dni",cedula);
+        intent.putExtra("dni", cedula);
         startActivity(intent);
     }
+
+
 }

@@ -1,11 +1,16 @@
 package com.jose.proyectos_institucionales;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jose.proyectos_institucionales.controlador.CtlActividad;
 import com.jose.proyectos_institucionales.controlador.CtlProyecto;
@@ -22,6 +27,8 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
     Proyecto proyecto;
     CtlUsuario controladorUsuario;
     Integer idUsuario;
+    CtlActividad conttroladorActividad;
+    private Integer m_Text ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,7 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_actividades_pertenezco);
 
         controladorUsuario = new CtlUsuario(this);
+        conttroladorActividad = new CtlActividad(this);
 
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
@@ -64,5 +72,39 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
         intent.putExtra("objActividad",actividad);
         intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
+    }
+
+    public void cambiarPorcentaje(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("% De Avance");
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+        builder.setView(input);
+
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                m_Text = Integer.parseInt(input.getText().toString());
+
+                if (m_Text>=0 || m_Text<=100){
+                    conttroladorActividad.modificarActividad(actividad.getId(),proyecto.getId(),actividad.getNombre(),actividad.getDescripcion(),actividad.getIdResponsable(),
+                            actividad.getFechaInicio(),actividad.getFechaFin(),m_Text);
+                }else {
+                    Toast.makeText(getApplicationContext(), "El Numero no Es valido", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+                }
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 }
