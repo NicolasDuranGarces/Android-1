@@ -76,7 +76,7 @@ public class DetalleTareaPertenezco extends AppCompatActivity {
 
                 m_Text = Integer.parseInt(input.getText().toString());
 
-                if (m_Text>=0 || m_Text<=100){
+                if (m_Text>=0 && m_Text<=100){
                     controladorTarea.modificarTarea(tarea.getId(),actividad.getId(),tarea.getNombre(),actividad.getDescripcion(),actividad.getFechaInicio(),actividad.getFechaFin(),m_Text);
                 }else {
                     Toast.makeText(getApplicationContext(), "El Numero no Es valido", Toast.LENGTH_SHORT).show();

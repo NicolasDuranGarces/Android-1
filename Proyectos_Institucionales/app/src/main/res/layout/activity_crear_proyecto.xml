@@ -119,9 +119,10 @@
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Regresar"
             android:layout_margin="20dp"
             android:background="@drawable/btn_redondeado_blanco"
+            android:onClick="regresar"
+            android:text="Regresar"
             android:textColor="@color/white" />
     </LinearLayout>
 </RelativeLayout>

@@ -78,7 +78,7 @@ public class ListaActividadesPropio extends AppCompatActivity {
 
         Intent intent = new Intent(this , DetalleActividadPropia.class);
         intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("objActividad", actividad);
+        intent.putExtra("idUsuario", idUsuario);
         startActivity(intent);
     }
 

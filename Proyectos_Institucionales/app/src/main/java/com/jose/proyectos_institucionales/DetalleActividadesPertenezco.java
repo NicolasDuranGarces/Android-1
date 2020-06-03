@@ -88,7 +88,7 @@ public class DetalleActividadesPertenezco extends AppCompatActivity {
 
                 m_Text = Integer.parseInt(input.getText().toString());
 
-                if (m_Text>=0 || m_Text<=100){
+                if (m_Text>=0 && m_Text<=100){
                     conttroladorActividad.modificarActividad(actividad.getId(),proyecto.getId(),actividad.getNombre(),actividad.getDescripcion(),actividad.getIdResponsable(),
                             actividad.getFechaInicio(),actividad.getFechaFin(),m_Text);
                 }else {
