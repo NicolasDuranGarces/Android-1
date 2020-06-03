@@ -99,11 +99,13 @@ public class CrearProyecto extends AppCompatActivity {
             btnActilizar.setVisibility(View.VISIBLE);
             btnRegistrar.setVisibility(View.GONE);
             porcentaje.setText(String.valueOf(proyecto.getPorcentajeDesarrollado()));
+            txtNombre.setText(proyecto.getNombre());
+            txtFechaInicio.setText(proyecto.getFechaInicio());
+            txtFechaFin.setText(proyecto.getFechaFin());
         }else {
             porcentaje.setVisibility(View.GONE);
             btnActilizar.setVisibility(View.GONE);
         }
-
 
 
     }
@@ -139,7 +141,7 @@ public class CrearProyecto extends AppCompatActivity {
             controladorProyecto.modificarProyecto(proyecto.getId(),txtNombre.getText().toString(),idUsuario,txtFechaInicio.getText().toString(),txtFechaFin.getText().toString(),Integer.parseInt(porcentaje.getText().toString()));
             proyecto = controladorProyecto.buscarProyecto(proyecto.getId());
             Toast.makeText( getApplicationContext(), "Se Actualizo Correctamente", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this , misProyectos.class);
+            Intent intent = new Intent(this , DetalleProyectoPropio.class);
             intent.putExtra("dni",cedula);
             intent.putExtra("idUsuario",idUsuario);
             intent.putExtra("objProyecto",proyecto);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,6 +17,7 @@ import com.jose.proyectos_institucionales.controlador.CtlActividad;
 import com.jose.proyectos_institucionales.controlador.CtlCargo;
 import com.jose.proyectos_institucionales.controlador.CtlIntegrante;
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
+import com.jose.proyectos_institucionales.modelo.Actividad;
 import com.jose.proyectos_institucionales.modelo.Cargo;
 import com.jose.proyectos_institucionales.modelo.Integrante;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
@@ -26,7 +28,7 @@ import java.util.Calendar;
 
 public class RegistrarActividad extends AppCompatActivity {
 
-    EditText txtnombre,txtDescripcion,txtfechaInicio,txtFechaFin;
+    EditText txtnombre,txtDescripcion,txtfechaInicio,txtFechaFin,porcentaje;
     Spinner spinerResponsables;
     CtlIntegrante controladorIntegrantes;
     CtlUsuario controladorUsuario;
@@ -34,6 +36,8 @@ public class RegistrarActividad extends AppCompatActivity {
     CtlCargo controladorCargo;
     Proyecto proyecto;
     ArrayList<Integrante> integrantes;
+    Actividad actividad;
+    Button btnRegistrar,btnActilizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +48,14 @@ public class RegistrarActividad extends AppCompatActivity {
         txtDescripcion = findViewById(R.id.txtDescripcionActividad);
         txtfechaInicio = findViewById(R.id.txtFechaIncioActividad);
         txtFechaFin = findViewById(R.id.txtFechaFinActividad);
+        porcentaje = findViewById(R.id.porcentaje);
 
         controladorIntegrantes = new CtlIntegrante(this);
         controladorUsuario = new CtlUsuario(this);
         controladorActividad = new CtlActividad(this);
         controladorCargo = new CtlCargo(this);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnActilizar = findViewById(R.id.btnActilizar);
 
         spinerResponsables = findViewById(R.id.spinnerResponsable);
 
@@ -93,7 +100,26 @@ public class RegistrarActividad extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+        actividad = (Actividad) bundle.getSerializable("objActividad");
         integrantes = (ArrayList<Integrante>) controladorIntegrantes.listarIntegrantesProyecto(proyecto.getId());
+
+
+        if (actividad != null){
+            porcentaje.setVisibility(View.VISIBLE);
+            btnActilizar.setVisibility(View.VISIBLE);
+            btnRegistrar.setVisibility(View.GONE);
+
+            porcentaje.setText(String.valueOf(proyecto.getPorcentajeDesarrollado()));
+            txtnombre.setText(actividad.getNombre());
+            txtfechaInicio.setText(actividad.getFechaInicio());
+            txtFechaFin.setText(actividad.getFechaFin());
+            txtDescripcion.setText(actividad.getDescripcion());
+
+        }else {
+            porcentaje.setVisibility(View.GONE);
+            btnActilizar.setVisibility(View.GONE);
+        }
+
         cargarOpciones();
     }
 
@@ -148,6 +174,27 @@ public class RegistrarActividad extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public void actualizar(View view){
+        if(!txtnombre.getText().toString().equals("")&&!txtDescripcion.getText().toString().equals("")&&
+                !txtfechaInicio.getText().toString().equals("")&&!txtFechaFin.getText().toString().equals("")){
+            Integer id = idResponsable(spinerResponsables.getSelectedItem().toString());
+            controladorActividad.modificarActividad(actividad.getId(),proyecto.getId(),txtnombre.getText().toString(),txtDescripcion.getText().toString(),
+                    id,txtfechaInicio.getText().toString(),
+                    txtFechaFin.getText().toString(),Integer.parseInt(porcentaje.getText().toString()));
+
+            actividad = controladorActividad.buscarActividad(actividad.getId());
+
+            Intent intent = new Intent(this , DetalleActividadPropia.class);
+            intent.putExtra("objProyecto", proyecto);
+            intent.putExtra("objActividad", actividad);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText( getApplicationContext(), "Todos Los Campos Son Obligatorios", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }
