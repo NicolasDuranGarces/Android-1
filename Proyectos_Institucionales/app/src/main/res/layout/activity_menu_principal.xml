@@ -74,7 +74,8 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:text="@string/iniciar_sesion" />
+            android:text="Modificar Perfil"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnSalir"

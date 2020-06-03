@@ -48,7 +48,9 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void editarDatos(View view) {
-
+        Intent intent = new Intent(this , RegistroUsuario.class);
+        intent.putExtra("dni",cedula);
+        startActivity(intent);
     }
 
     public void salir(View view){
