@@ -10,47 +10,35 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jose.proyectos_institucionales.controlador.CtlProyecto;
-import com.jose.proyectos_institucionales.controlador.CtlUsuario;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
-import com.jose.proyectos_institucionales.modelo.Usuario;
 
 import java.util.ArrayList;
 
-public class misProyectos extends AppCompatActivity {
-    Integer idUsuario;
-    ArrayList<Proyecto> proyectos;
+public class ListadoDeProyectoPertenezco extends AppCompatActivity {
+
     ListView listaProyectos;
+    ArrayList<Proyecto> proyectoPertenzco;
     CtlProyecto controladorProyecto;
-    CtlUsuario controladorUsuario;
-    String dniUsurio;
+    Integer idUsuario;
+    String cedula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_proyectos);
-
-        listaProyectos = findViewById(R.id.listaProyectos);
-
+        setContentView(R.layout.activity_listado_de_proyecto_pertenezco);
+        listaProyectos = findViewById(R.id.listaProyectosPertenezco);
         controladorProyecto = new CtlProyecto(this);
-        controladorUsuario = new CtlUsuario(this);
 
         Bundle bundle = getIntent().getExtras();
         idUsuario = bundle.getInt("idUsuario");
-        dniUsurio = bundle.getString("dni");
+        cedula = bundle.getString("dni");
 
-        proyectos = (ArrayList<Proyecto>) controladorProyecto.listarProyectosQueDirijo(idUsuario);
+        proyectoPertenzco = (ArrayList<Proyecto>) controladorProyecto.listarProyectosQueIntegro(idUsuario);
 
-        if (proyectos.size()!=0){
-            cargarLista(proyectos);
+        if (proyectoPertenzco.size()!=0){
+            cargarLista(proyectoPertenzco);
         }
 
-
-    }
-
-    public void crearProyecto(View view){
-        Intent intent = new Intent(this , CrearProyecto.class);
-        intent.putExtra("idUsuario",idUsuario);
-        startActivity(intent);
     }
 
     public void cargarLista(ArrayList<Proyecto> lista) {
@@ -72,22 +60,17 @@ public class misProyectos extends AppCompatActivity {
     }
 
     public void abrirDetalle(int posicion){
-        Intent intent = new Intent(this, DetalleProyectoPropio.class);
-        Proyecto proyecto = proyectos.get(posicion);
+        Intent intent = new Intent(this, DetalleProyectoPertenezco.class);
+        Proyecto proyecto = proyectoPertenzco.get(posicion);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
 
-    public void regresar(View view){
+    public void regresar(){
         Intent intent = new Intent(this, MenuPrincipal.class);
-        intent.putExtra("dni",dniUsurio);
         intent.putExtra("idUsuario",idUsuario);
+        intent.putExtra("dni",cedula);
         startActivity(intent);
     }
-
-
-
-
-
 }

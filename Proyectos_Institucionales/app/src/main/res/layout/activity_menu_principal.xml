@@ -62,7 +62,9 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:text="@string/iniciar_sesion" />
+            android:onClick="proyectosQueHagoParte"
+            android:text="Proyectos que Hago Parte"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnIniciar"

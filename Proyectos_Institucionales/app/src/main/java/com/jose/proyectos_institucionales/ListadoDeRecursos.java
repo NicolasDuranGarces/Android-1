@@ -53,6 +53,25 @@ public class ListadoDeRecursos extends AppCompatActivity {
 
         if (recursos.size()!= 0){
             cargarLista(recursos);
+        }else {
+            final Context context = this;
+            ad = new AlertDialog.Builder(context);
+            ad.setTitle("Error");
+            ad.setMessage("No hay Ningun Recurso , Desea Agregar ? ");
+            ad.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    registrarRecurso();
+                }
+            });
+            ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.cancel();
+                }
+            });
+            ad.show();
         }
 
     }
@@ -109,6 +128,12 @@ public class ListadoDeRecursos extends AppCompatActivity {
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("objActividad", actividad);
         intent.putExtra("objTarea", tarea);
+        startActivity(intent);
+    }
+
+    public void registrarRecurso(){
+        Intent intent = new Intent(this, RegistroRecursos.class);
+        intent.putExtra("objProyecto", proyecto);
         startActivity(intent);
     }
 

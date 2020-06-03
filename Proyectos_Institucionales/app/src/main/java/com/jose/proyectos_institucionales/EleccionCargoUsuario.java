@@ -50,6 +50,25 @@ public class EleccionCargoUsuario extends AppCompatActivity {
 
         if (listaCargos.size()!=0){
             cargarLista(listaCargos);
+        }else{
+            final Context context = this;
+            ad = new AlertDialog.Builder(context);
+            ad.setTitle("Error");
+            ad.setMessage("No hay Ningun cargo , Desea Agregar ? ");
+            ad.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    registrarRecurso();
+                }
+            });
+            ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.cancel();
+                }
+            });
+            ad.show();
         }
 
     }
@@ -83,5 +102,11 @@ public class EleccionCargoUsuario extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void registrarRecurso(){
+        Intent intent = new Intent(this , GestionDeCargos.class);
+        intent.putExtra("objProyecto",proyecto);
+        startActivity(intent);
     }
 }

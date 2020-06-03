@@ -11,35 +11,37 @@ import android.widget.ListView;
 
 import com.jose.proyectos_institucionales.controlador.CtlActividad;
 import com.jose.proyectos_institucionales.modelo.Actividad;
-import com.jose.proyectos_institucionales.modelo.Cargo;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
+import com.jose.proyectos_institucionales.modelo.Usuario;
 
 import java.util.ArrayList;
 
-public class ListaActividadesPropio extends AppCompatActivity {
+public class listadoMisActividades extends AppCompatActivity {
 
-    ListView listaViewActividades;
-    CtlActividad controladorActividad;
+    ListView listaActividades;
     Proyecto proyecto;
-    ArrayList<Actividad> actividades;
+    Integer idUsuario;
+    CtlActividad controladorActividad;
+    ArrayList<Actividad> listaDeACtiviadePertenesco;
     Actividad actividad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_actividades_propio);
-
-        listaViewActividades = findViewById(R.id.listViewActividades);
-
-        Bundle bundle = getIntent().getExtras();
-        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+        setContentView(R.layout.activity_listado_mis_actividades);
 
         controladorActividad = new CtlActividad(this);
 
-        actividades = (ArrayList<Actividad>) controladorActividad.listarActividadesProyecto(proyecto.getId());
+        Bundle bundle = getIntent().getExtras();
+        proyecto = (Proyecto) bundle.getSerializable("objProyecto");
+        idUsuario = bundle.getInt("idUsuario");
 
-        if (actividades.size()!=0){
-            cargarLista(actividades);
+        listaActividades = findViewById(R.id.listaMisActividades);
+
+        listaDeACtiviadePertenesco = (ArrayList<Actividad>) controladorActividad.listarMisActividadesProyecto(proyecto.getId(),idUsuario);
+
+        if (listaDeACtiviadePertenesco.size()!=0){
+            cargarLista(listaDeACtiviadePertenesco);
         }
 
     }
@@ -47,13 +49,13 @@ public class ListaActividadesPropio extends AppCompatActivity {
     public void cargarLista(ArrayList<Actividad> lista) {
         ArrayList<String> nombreActividades = new ArrayList<>();
         String entrada;
-        for (Actividad actividad : lista){
-            entrada=actividad.getNombre();
+        for (Actividad actividades : lista){
+            entrada=actividades.getNombre() + " " + actividades.getPorcentajeDesarrollado();
             nombreActividades.add(entrada);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreActividades);
-        listaViewActividades.setAdapter(adapter);
-        listaViewActividades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listaActividades.setAdapter(adapter);
+        listaActividades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
                 detalleActividadPropio(posicion);
@@ -62,29 +64,20 @@ public class ListaActividadesPropio extends AppCompatActivity {
 
     }
 
-    public void registrarActividad(View view){
-        Intent intent = new Intent(this , RegistrarActividad.class);
-        intent.putExtra("objProyecto", proyecto);
-        startActivity(intent);
-    }
-
-    public void detalleActividadPropio(int pos){
-
-        actividad = controladorActividad.buscarActividad(actividades.get(pos).getId());
-
-        Intent intent = new Intent(this , DetalleActividadPropia.class);
-        intent.putExtra("objProyecto", proyecto);
-        intent.putExtra("objActividad", actividad);
-        startActivity(intent);
-    }
-
     public void regresar(View view){
-        Intent intent = new Intent(this , DetalleProyectoPropio.class);
+        Intent intent = new Intent(this , DetalleProyectoPertenezco.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("idUsuario", proyecto.getIdDirector());
         startActivity(intent);
     }
 
+    public void detalleActividadPropio(int pos){
 
+        actividad = controladorActividad.buscarActividad(listaDeACtiviadePertenesco.get(pos).getId());
 
+        Intent intent = new Intent(this , DetalleActividadesPertenezco.class);
+        intent.putExtra("objProyecto", proyecto);
+        intent.putExtra("objActividad", actividad);
+        startActivity(intent);
+    }
 }

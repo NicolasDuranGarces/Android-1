@@ -11,18 +11,19 @@ import com.jose.proyectos_institucionales.controlador.CtlProyecto;
 import com.jose.proyectos_institucionales.controlador.CtlUsuario;
 import com.jose.proyectos_institucionales.modelo.Proyecto;
 
-public class DetalleProyectoPropio extends AppCompatActivity {
+public class DetalleProyectoPertenezco extends AppCompatActivity {
 
     TextView txtNombre,txtFechaInicio,txtFechaFin,txtPorcentaje;
-    Proyecto proyecto;
     CtlProyecto controladorProyecto;
+    Proyecto proyecto;
     Integer idUsuario;
     CtlUsuario controladorUsuario;
+    String cedula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_proyecto_propio);
+        setContentView(R.layout.activity_detalle_proyecto_pertenezco);
 
         txtNombre = findViewById(R.id.txtNomProyectoPro);
         txtFechaInicio = findViewById(R.id.txtFechaInicioProy);
@@ -37,43 +38,25 @@ public class DetalleProyectoPropio extends AppCompatActivity {
         proyecto = (Proyecto) bundle.getSerializable("objProyecto");
         idUsuario = bundle.getInt("idUsuario");
 
+        cedula = controladorUsuario.buscarUsuarioPorID(idUsuario).getNumeroDocumento();
+
         txtNombre.setText("Nombre: "+proyecto.getNombre());
         txtFechaInicio.setText("Fecha Incio: "+proyecto.getFechaInicio());
         txtFechaFin.setText("Fecha Fin: "+proyecto.getFechaFin());
         txtPorcentaje.setText("% Terminado: "+proyecto.getPorcentajeDesarrollado());
-
     }
 
-    public void gestionIntegranes(View view){
-        Intent intent = new Intent(this, GestionIntegrantesProyecto.class);
-        intent.putExtra("objProyecto", proyecto);
-        startActivity(intent);
-    }
-
-    public void gestionCargo(View view){
-        Intent intent = new Intent(this, ListadoDeCargos.class);
-        intent.putExtra("objProyecto", proyecto);
-        startActivity(intent);
-    }
-
-    public void gestionActividad(View view){
-        Intent intent = new Intent(this, ListaActividadesPropio.class);
+    public void listadoActividades(View view){
+        Intent intent = new Intent(this, listadoMisActividades.class);
         intent.putExtra("objProyecto", proyecto);
         intent.putExtra("idUsuario",idUsuario);
         startActivity(intent);
     }
 
-    public void gestionRecursos(View view){
-        Intent intent = new Intent(this, RegistroRecursos.class);
-        intent.putExtra("objProyecto", proyecto);
-        startActivity(intent);
-    }
+
     public  void regresar(View view){
-        String cedula = controladorUsuario.buscarUsuarioPorID(idUsuario).getNumeroDocumento();
-        Intent intent = new Intent(this, misProyectos.class);
-        intent.putExtra("idUsuario",idUsuario);
+        Intent intent = new Intent(this, MenuPrincipal.class);
         intent.putExtra("dni",cedula);
         startActivity(intent);
     }
-
 }

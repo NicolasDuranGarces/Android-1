@@ -100,7 +100,7 @@ public class RegistrarActividad extends AppCompatActivity {
     public void registrar(View view){
         if(!txtnombre.getText().toString().equals("")&&!txtDescripcion.getText().toString().equals("")&&
                 !txtfechaInicio.getText().toString().equals("")&&!txtFechaFin.getText().toString().equals("")){
-                    int id = idResponsable(spinerResponsables.getSelectedItem().toString());
+                    Integer id = idResponsable(spinerResponsables.getSelectedItem().toString());
                 controladorActividad.guardarActividad(proyecto.getId(),txtnombre.getText().toString(),txtDescripcion.getText().toString(),
                         id,txtfechaInicio.getText().toString(),
                         txtFechaFin.getText().toString(),0);
@@ -123,7 +123,7 @@ public class RegistrarActividad extends AppCompatActivity {
         Cargo cargo;
         for (int i = 0 ; i < integrantes.size(); i ++){
             integrante = controladorUsuario.buscarUsuarioPorID(integrantes.get(i).getIdUsuario());
-            cargo = controladorCargo.buscarCargo(integrantes.get(i).getId());
+            cargo = controladorCargo.buscarCargo(integrantes.get(i).getIdUsuario());
             entrada = integrante.getId() +"-"+integrante.getNombres()+"-"+integrante.getApellidos()+"-"+cargo.getNombre();
             nombreIntegrantes.add(entrada);
         }

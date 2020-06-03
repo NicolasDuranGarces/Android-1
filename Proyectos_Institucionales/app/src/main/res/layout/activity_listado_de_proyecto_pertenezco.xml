@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".misProyectos">
+    tools:context=".ListadoDeProyectoPertenezco">
 
     <ImageView
         android:layout_width="match_parent"
@@ -16,50 +16,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Mis Proyectos"
+            android:text="Proyectos"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:paddingLeft="50dp"/>
 
         <ListView
-            android:id="@+id/listaProyectos"
+            android:id="@+id/listaProyectosPertenezco"
             android:layout_width="match_parent"
-            android:layout_height="515dp"
+            android:layout_height="607dp"
             android:layout_marginBottom="20dp">
 
         </ListView>
 
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:elevation="5dp"
-            android:onClick="crearProyecto"
-            android:text="Crear Un Proyecto"
 
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:elevation="5dp"
-            android:onClick="regresar"
-            android:text="Regresar"
-
-            android:textColor="@color/white"
-            android:textSize="16dp" />
 
     </LinearLayout>
 

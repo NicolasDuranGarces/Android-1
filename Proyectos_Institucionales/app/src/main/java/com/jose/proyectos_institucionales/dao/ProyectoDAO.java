@@ -112,7 +112,7 @@ public class ProyectoDAO {
                 "p.fechaInicio, " +
                 "p.fechaFin, " +
                 "p.porcentajeDesarrollado " +
-                "from proyecto p" +
+                "from proyecto p " +
                 "join integrante i on p.id = i.idProyecto " +
                 "where idUsuario= " + idUsuario ;
         Cursor temp = conex.ejecutarSearch(consulta);

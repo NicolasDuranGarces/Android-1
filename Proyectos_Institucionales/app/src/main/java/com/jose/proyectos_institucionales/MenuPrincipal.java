@@ -41,7 +41,10 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void proyectosQueHagoParte(View view) {
-
+        Intent intent = new Intent(this , ListadoDeProyectoPertenezco.class);
+        intent.putExtra("dni",cedula);
+        intent.putExtra("idUsuario",idUsuario);
+        startActivity(intent);
     }
 
     public void editarDatos(View view) {

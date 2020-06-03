@@ -4,13 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalleProyectoPropio">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/findototal" />
+    tools:context=".DetalleProyectoPertenezco">
 
 
     <LinearLayout
@@ -59,18 +53,6 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btnMisProyectos1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionIntegranes"
-            android:text="Gestionar Integrantes"
-            android:textColor="@color/white" />
-
-        <Button
             android:id="@+id/btnMisProyectos2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,34 +60,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionActividad"
-            android:text="Agregar Actividades"
+            android:onClick="listadoActividades"
+            android:text="Ver Actividades"
             android:textColor="@color/white" />
 
-
-        <Button
-            android:id="@+id/btnMisProyectos3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionCargo"
-            android:text="Gestion de cargos"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnagregarRecursosProyecto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionRecursos"
-            android:text="Gestion de Recursos"
-            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnMisProyectos4"
@@ -116,28 +74,6 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
             android:text="gestion de reuiniones"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:text="Modificar Proyecto"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:text="Eliminar Proyecto"
             android:textColor="@color/white" />
 
         <Button

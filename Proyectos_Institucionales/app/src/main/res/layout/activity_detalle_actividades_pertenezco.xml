@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalleProyectoPropio">
+    tools:context=".DetalleActividadesPertenezco">
 
     <ImageView
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtNomProyectoPro"
+            android:id="@+id/txtNomnbreActividadPertenezco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -29,7 +29,7 @@
             android:paddingLeft="10dp"/>
 
         <TextView
-            android:id="@+id/txtFechaInicioProy"
+            android:id="@+id/txtDescripcionD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -39,7 +39,7 @@
             android:paddingLeft="10dp"/>
 
         <TextView
-            android:id="@+id/txtFechaFinProyectoy"
+            android:id="@+id/txtFechaInicioActividadD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -49,7 +49,27 @@
             android:paddingLeft="10dp"/>
 
         <TextView
-            android:id="@+id/txtPorcentaje"
+            android:id="@+id/txtFechaFinActividadD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Bienvenido : "
+            android:textColor="@color/blue"
+            android:textSize="24sp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/txtResponsableD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:paddingLeft="10dp"
+            android:text="Bienvenido : "
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/txtPorcentajeDA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -59,93 +79,36 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btnMisProyectos1"
+            android:id="@+id/btnModificarActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionIntegranes"
-            android:text="Gestionar Integrantes"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionActividad"
-            android:text="Agregar Actividades"
+            android:text="% Terminacion"
             android:textColor="@color/white" />
 
 
         <Button
-            android:id="@+id/btnMisProyectos3"
+            android:id="@+id/btnListarTareas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionCargo"
-            android:text="Gestion de cargos"
+            android:onClick="listarTareas"
+            android:text="Listar Tareas"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/btnagregarRecursosProyecto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:onClick="gestionRecursos"
-            android:text="Gestion de Recursos"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:text="gestion de reuiniones"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:text="Modificar Proyecto"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btnMisProyectos6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/btn_redondeado_blanco"
-            android:text="Eliminar Proyecto"
-            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnMisProyectos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_redondeado_blanco"
             android:onClick="regresar"
